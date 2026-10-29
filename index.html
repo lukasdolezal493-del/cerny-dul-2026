@@ -95,6 +95,42 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 .mapwrap.on .me{display:block}
 .gpsbtn{margin:8px 0 0;min-height:44px;padding:0 14px;border-radius:10px;border:2px solid #1a73e8;background:#fff;color:#1a73e8;font-size:15px;font-weight:700;cursor:pointer}
 .gpsmsg{font-size:13px;color:var(--soft);margin:4px 0 8px}
+
+/* --- fáze 2 --- */
+body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+.tabs{display:none}
+nav.bnav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -4px 16px rgba(0,0,0,.06)}
+nav.bnav .in{display:flex;width:100%;max-width:680px}
+nav.bnav button{flex:1;border:0;background:none;padding:8px 2px 9px;min-height:62px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;font-weight:650;color:var(--soft);cursor:pointer}
+nav.bnav button .i{font-size:22px;line-height:1.1}
+nav.bnav button[aria-selected="true"]{color:var(--forest)}
+nav.bnav button[aria-selected="true"] .i{transform:scale(1.12)}
+nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px;height:3px;border-radius:2px;background:var(--forest);margin-top:2px}
+.panel{padding-top:14px}
+.box{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;margin:0 0 14px}
+.box h2{font-size:17px;margin:0 0 8px}
+.today{display:flex;gap:10px;flex-wrap:wrap}
+.today .t1{flex:1 1 140px;background:#f4f1ea;border-radius:12px;padding:10px 12px}
+.today .t1 b{display:block;font-size:20px}
+.today .t1 span{font-size:13px;color:var(--soft)}
+.olist{list-style:none;padding:0;margin:0}
+.olist li{display:flex;justify-content:space-between;gap:10px;padding:9px 2px;border-bottom:1px solid #eee8dc;font-size:15px;cursor:pointer}
+.olist li:last-child{border-bottom:0}
+.olist li .h{font-weight:700;color:var(--g);white-space:nowrap}
+.olist li.no{color:var(--soft);cursor:default}
+.olist li.no .h{color:#9a9a9a;font-weight:600}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 0 12px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filters button{flex:none;border:1.5px solid var(--forest);background:#fff;color:var(--forest);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:650;min-height:40px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--forest);color:#fff}
+.tasks{background:#f5f8ff;border:1.5px solid #c9d8f5;border-radius:12px;padding:10px 12px;margin-top:14px}
+.tasks h3{border:0;margin:0 0 4px;padding:0;font-size:15.5px}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:15px;cursor:pointer}
+.chk input{width:22px;height:22px;flex:none;margin:1px 0 0;accent-color:var(--g)}
+.chk input:checked+span{text-decoration:line-through;color:var(--soft)}
+.small{font-size:12.5px;color:var(--soft)}
+.tip{background:#eef7f0;border-left:4px solid var(--g);border-radius:8px;padding:10px 12px;font-size:15px;cursor:pointer}
+.tip b{display:block}
 </style>
 </head>
 <body>
@@ -118,6 +154,23 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 </div></header>
 
 <div class="wrap">
+<div class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-p="pp">🥾 Pěšky</button>
+  <button role="tab" aria-selected="false" data-p="vv">🚗 Autem</button>
+  <button role="tab" aria-selected="false" data-p="ii">ℹ️ Info</button>
+</div>
+
+<!-- ================= PROCHÁZKY ================= -->
+<section class="panel" id="dd">
+<div class="box"><h2 id="dtitle">Dnes</h2>
+  <div class="today">
+    <div class="t1"><span>Západ slunce</span><b id="sunset">–</b><span>z lesa ven do té doby</span></div>
+    <div class="t1"><span>Počasí v Černém Dole</span><b id="wx">…</b><span id="wx2">načítám</span></div>
+  </div>
+</div>
+<div class="box"><h2>💡 Tip na dnes</h2><div id="tip" class="tip">…</div></div>
+<div class="box"><h2>🕘 Dnes otevřeno</h2><ul class="olist" id="open"></ul>
+  <div class="small" style="margin-top:6px">Podle údajů ověřených 29. 10. 2026. Klepnutím otevřeš výlet. Příští rok je potřeba časy znovu ověřit.</div></div>
 <div class="badges" id="badges">
   <div class="bh"><b>🏅 Odznaky výpravy</b><span id="bcount">0 / 13</span></div>
   <div class="bgrid">
@@ -137,17 +190,14 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   </div>
   <div class="champ" id="champ">🎉 Všech 13 odznaků! Jste Krkonošští mistři! 🎉</div>
 </div>
-<div class="tabs" role="tablist">
-  <button role="tab" aria-selected="true" data-p="pp">🥾 Pěšky</button>
-  <button role="tab" aria-selected="false" data-p="vv">🚗 Autem</button>
-  <button role="tab" aria-selected="false" data-p="ii">ℹ️ Info</button>
-</div>
-
-<!-- ================= PROCHÁZKY ================= -->
-<section class="panel" id="pp">
+<div class="box"><h2>🎒 S sebou na výlet</h2><div id="pack"></div>
+  <button class="filters" style="all:unset;color:var(--b);font-weight:650;font-size:14px;cursor:pointer" id="packreset">↺ Odškrtnout vše znovu</button></div>
+</section>
+<section class="panel" id="pp" hidden>
+<div class="filters" data-for="pp"><button aria-pressed="true" data-f="">Vše</button><button aria-pressed="false" data-f="kratke">Krátké do 6 km</button><button aria-pressed="false" data-f="delsi">Delší</button><button aria-pressed="false" data-f="jidlo">S jídlem cestou</button><button aria-pressed="false" data-f="chata">Přímo od chaty</button></div>
 <p class="intro">Trasy po turistických značkách. Většina začíná přímo u chaty. Klepni na trasu a rozbalí se mapa a popis cesty. Na mapě tras funguje tlačítko <b>📍 Kde jsem</b> (GPS, i bez signálu).</p>
 
-<details class="card" data-id="p1" style="--c:var(--g)">
+<details class="card" data-tags="kratke chata" data-id="p1" style="--c:var(--g)">
 <summary><span class="pic" aria-hidden="true">🪨</span><div class="kick">Malá procházka</div><div class="ttl">Okruh kolem lomu</div>
 <div class="chips"><span class="chip">3,7 km</span><span class="chip">+140 m</span><span class="chip">1,5–2 h</span><span class="chip"><span class="mk g"></span>zelený roh</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -171,11 +221,12 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   </ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.69978,50.63459;15.69625,50.63454;15.69802,50.64032&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM. Délku 3,7 km potvrzuje i leták KRNAP.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="p1-0"><span>Spočítejte, kolik zelených rohů (značek) cestou najdete.</span></label><label class="chk"><input type="checkbox" data-k="p1-1"><span>Na vyhlídce najděte lanovky a sjezdovku.</span></label><label class="chk"><input type="checkbox" data-k="p1-2"><span>Na rozcestníku přečtěte, kolik metrů nad mořem jste.</span></label></div>
   <button class="donebtn" type="button" data-id="p1" data-nm="Strážce lomu">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
-<details class="card" data-id="p2" style="--c:var(--r)">
+<details class="card" data-tags="kratke chata" data-id="p2" style="--c:var(--r)">
 <summary><span class="pic" aria-hidden="true">⛏️</span><div class="kick">Malá až střední</div><div class="ttl">Stezka za sv. Barborou</div>
 <div class="chips"><span class="chip">5,2 km</span><span class="chip">+190 m</span><span class="chip">2–2,5 h</span><span class="chip"><span class="mk r"></span>červený roh</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -195,11 +246,12 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <ul><li>Na trase žádná bouda není. Na startu a v cíli: <b>Restaurace Pošta</b> na náměstí (denně 8–10 a 11–22, tel. <a href="tel:+420730590830">730 590 830</a>).</li></ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.71558,50.63824;15.733231,50.632265;15.71289,50.6277;15.70987,50.6348&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="p2-0"><span>Kdo první uvidí červený roh, vede výpravu k další značce.</span></label><label class="chk"><input type="checkbox" data-k="p2-1"><span>Na vyhlídce najděte náměstí a chatu.</span></label><label class="chk"><input type="checkbox" data-k="p2-2"><span>Svatá Barbora je patronka horníků. Zkuste zjistit proč.</span></label></div>
   <button class="donebtn" type="button" data-id="p2" data-nm="Mladý horník">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
-<details class="card" data-id="p3" style="--c:var(--b)">
+<details class="card" data-tags="delsi jidlo chata" data-id="p3" style="--c:var(--b)">
 <summary><span class="pic" aria-hidden="true">🏔️</span><div class="kick">Střední · na celý den</div><div class="ttl">Okruh přes Tetřeví boudy</div>
 <div class="chips"><span class="chip">11,4 km</span><span class="chip">+530 m</span><span class="chip">4,5–5 h</span><span class="chip"><span class="mk y"></span><span class="mk g"></span><span class="mk b"></span></span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -228,10 +280,11 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
     <li>Nahoře je o 450 m výš, takže zhruba o 3 °C chladněji a víc fouká. Vezměte čepice a vrstvy.</li>
   </ul>
   <div class="foot">Délka, značení a rozcestníky z OpenStreetMapu (podklad i pro Mapy.com), převýšení z EU-DEM. V terénu se řiď značkami, mapa je kontrola.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="p3-0"><span>Najděte všechny 3 barvy značek: žlutou, zelenou a modrou.</span></label><label class="chk"><input type="checkbox" data-k="p3-1"><span>Najděte rozcestník s nejvyšší výškou (Hrnčířské boudy, 1 070 m).</span></label><label class="chk"><input type="checkbox" data-k="p3-2"><span>Na Tetřevích boudách nakreslete, jak asi vypadá tetřev.</span></label></div>
   <button class="donebtn" type="button" data-id="p3" data-nm="Dobyvatel Tetřevích bud">✓ Splněno – získat odznak</button>
 </div>
 </details>
-<details class="card" data-id="p4" style="--c:#2f6b45">
+<details class="card" data-tags="kratke jidlo" data-id="p4" style="--c:#2f6b45">
 <summary><span class="pic" aria-hidden="true">🌿</span><div class="kick">Lanovkou nahoru · lehká</div><div class="ttl">Černá hora a rašeliniště</div>
 <div class="chips"><span class="chip">5,5 km nahoře</span><span class="chip">+180 m</span><span class="chip">2,5–3 h</span><span class="chip">🔭 2 vyhlídky</span><span class="chip">🍽 2 boudy</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -264,10 +317,11 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <ul><li><span class="warn">Ověř před cestou:</span> web lanovky zmiňuje výměnu dřevěného chodníku na rašeliništi. Když bude zavřený, jděte od Černé boudy po žluté a modré kolem Velkých Pardubických bud.</li>
   <li>Na rašeliništi je stezka každý rok zavřená 15. 3.–31. 5. Kočárek ne.</li></ul>
   <div class="foot">Lanovka a ceny: leto.skiresort.cz, ověřeno 29. 10. 2026. Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="p4-0"><span>V kabince odhadněte, jak vysoko nad zemí jste.</span></label><label class="chk"><input type="checkbox" data-k="p4-1"><span>Na Hubertově vyhlídce najděte Sněžku, nejvyšší horu Česka.</span></label><label class="chk"><input type="checkbox" data-k="p4-2"><span>Na rašeliništi jděte jen po dřevěném chodníku a najděte jezírko.</span></label></div>
   <button class="donebtn" type="button" data-id="p4" data-nm="Strážce rašeliniště">✓ Splněno – získat odznak</button>
 </div>
 </details>
-<details class="card" data-id="p5" style="--c:#9a6700">
+<details class="card" data-tags="delsi jidlo chata" data-id="p5" style="--c:#9a6700">
 <summary><span class="pic" aria-hidden="true">🥾</span><div class="kick">Od chaty · náročná</div><div class="ttl">Přes Zrcadlové boudy k Hoffmannovým boudám</div>
 <div class="chips"><span class="chip">5,1 km jedním směrem</span><span class="chip">+445 m</span><span class="chip">2–2,5 h</span><span class="chip">🍽 bouda v cíli</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -287,10 +341,11 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <ul><li><b>Hoffmannova bouda</b>: domácí česká kuchyně, dětský koutek, uváděno denně 11–22 (údaj může být starý), tel. <a href="tel:+420777946434">777 946 434</a>.</li></ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.75589,50.63243&waypoints=15.73385,50.6456;15.74637,50.6379&routeType=foot_hiking" target="_blank" rel="noopener">▶ Trasa v Mapy.com</a></div>
   <div class="foot">Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="p5-0"><span>Kdo první dojde na Vendlovku (1 000 m), je král kopce.</span></label><label class="chk"><input type="checkbox" data-k="p5-1"><span>Najděte Stezku korunami, z kopce bývá vidět.</span></label><label class="chk"><input type="checkbox" data-k="p5-2"><span>Na Hoffmannově boudě: dobrý oběd jako odměna!</span></label></div>
   <button class="donebtn" type="button" data-id="p5" data-nm="Poutník k Hoffmannovkám">✓ Splněno – získat odznak</button>
 </div>
 </details>
-<details class="card" data-id="p6" style="--c:#0969da">
+<details class="card" data-tags="delsi chata" data-id="p6" style="--c:#0969da">
 <summary><span class="pic" aria-hidden="true">🔦</span><div class="kick">Od chaty · střední</div><div class="ttl">Hornickým údolím k Berghausu</div>
 <div class="chips"><span class="chip">7,2 km tam a zpět</span><span class="chip">+300 m</span><span class="chip">2,5–3 h</span><span class="chip"><span class="mk b"></span>modrá</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -310,6 +365,7 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70802,50.6579;15.7071651,50.6600708;15.70802,50.6579&routeType=foot_hiking" target="_blank" rel="noopener">▶ Trasa v Mapy.com</a></div>
   <ul><li>Muzeum Podzemí Krkonoš (na úřadě v Černém Dole): út 10–12, čt 12–14, jen po rezervaci na <a href="tel:+420734403332">734 403 332</a>.</li></ul>
   <div class="foot">Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="p6-0"><span>Spočítejte, kolikrát uvidíte modrou značku.</span></label><label class="chk"><input type="checkbox" data-k="p6-1"><span>Na naučné stezce zjistěte z tabulí, co se tu těžilo.</span></label><label class="chk"><input type="checkbox" data-k="p6-2"><span>Hledejte v lese stopy po hornících.</span></label></div>
   <button class="donebtn" type="button" data-id="p6" data-nm="Hledač štol">✓ Splněno – získat odznak</button>
 </div>
 </details>
@@ -317,9 +373,10 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 
 <!-- ================= VÝLETY ================= -->
 <section class="panel" id="vv" hidden>
-<p class="intro">Celodenní výlety autem. Nejlepší den je <b>sobota 31. 10.</b>, kdy má ještě všechno otevřeno.</p>
+<div class="filters" data-for="vv"><button aria-pressed="true" data-f="">Vše</button><button aria-pressed="false" data-f="dest">Do deště</button><button aria-pressed="false" data-f="malo">Málo chůze</button><button aria-pressed="false" data-f="chuze">Hodně chůze</button><button aria-pressed="false" data-f="blizko">Do 30 min</button></div>
+<p class="intro">Celodenní výlety autem. Co je otevřené právě dnes, ukazuje záložka <b>☀️ Dnes</b>.</p>
 
-<details class="card" data-id="v1" style="--c:#9a3412">
+<details class="card" data-tags="dest chuze" data-id="v1" style="--c:#9a3412">
 <summary><span class="pic" aria-hidden="true">🗿</span><div class="kick">Výlet 1 · na jih</div><div class="ttl">Podzemí Josefov + Kuks a Braunův Betlém</div>
 <div class="chips"><span class="chip">🚗 103 km</span><span class="chip">🥾 6,6 km</span><span class="chip">930 Kč</span></div><div class="more">Zobrazit program a mapy ›</div></summary>
 <div class="body">
@@ -364,11 +421,12 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
     <li>Kdyby děti byly unavené: k Betlému se dá dojet autem až na parkoviště, odkud je to pár set metrů.</li>
   </ul>
   <div class="foot">Ceny a časy z oficiálních webů pevnostjosefov.cz a hospital-kuks.cz, ověřeno 29. 10. 2026.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="v1-0"><span>V podzemí Josefova: kolik schodů sejdete dolů?</span></label><label class="chk"><input type="checkbox" data-k="v1-1"><span>V Kuksu najděte sochu, která se tváří nejhrozivěji.</span></label><label class="chk"><input type="checkbox" data-k="v1-2"><span>U Betléma najděte jeskyni poustevníka Garina.</span></label></div>
   <button class="donebtn" type="button" data-id="v1" data-nm="Lovec soch">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
-<details class="card" data-id="v2" style="--c:#1e3a5f">
+<details class="card" data-tags="dest blizko" data-id="v2" style="--c:#1e3a5f">
 <summary><span class="pic" aria-hidden="true">🪖</span><div class="kick">Výlet 2 · na východ</div><div class="ttl">Stezka korunami stromů + tvrz Stachelberg</div>
 <div class="chips"><span class="chip">🚗 42 km</span><span class="chip">🥾 2,6 km</span><span class="chip">1 850 Kč</span><span class="chip">🔭 2 rozhledny</span></div><div class="more">Zobrazit program a mapy ›</div></summary>
 <div class="body">
@@ -410,11 +468,12 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
     <li>Do bunkrů nelezte, bývají v nich díry a ostré železo. Dívat se zvenku stačí. U lomu držte děti u sebe.</li>
   </ul>
   <div class="foot">Ceny a časy z oficiálních webů stachelberg.cz a treetop-walks.com/krkonose, ověřeno 29. 10. 2026. Stezka 9.–11. 11. zavřená.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="v2-0"><span>Na Stezce korunami: dojedete tobogánem dolů?</span></label><label class="chk"><input type="checkbox" data-k="v2-1"><span>U Stachelbergu spočítejte bunkry, které cestou uvidíte.</span></label><label class="chk"><input type="checkbox" data-k="v2-2"><span>Vylezte na rozhlednu Eliška.</span></label></div>
   <button class="donebtn" type="button" data-id="v2" data-nm="Bunkrový průzkumník">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
-<details class="card" data-id="v3" style="--c:#365314">
+<details class="card" data-tags="dest malo blizko" data-id="v3" style="--c:#365314">
 <summary><span class="pic" aria-hidden="true">🏰</span><div class="kick">Výlet 3 · na západ</div><div class="ttl">Muzeum Krkonoš ve Vrchlabí + hrad Pecka</div>
 <div class="chips"><span class="chip">🚗 67 km</span><span class="chip">🥾 ~1 km</span><span class="chip">750 Kč</span></div><div class="more">Zobrazit program a mapu ›</div></summary>
 <div class="body">
@@ -447,10 +506,11 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
     <li>Muzeum: tel. <a href="tel:+420737225428">737 225 428</a>. Aktuální otevírací dobu jsem na webu nenašel.</li>
   </ul>
   <div class="foot">Pecka: hradpecka.cz, ověřeno 29. 10. 2026. Muzeum: leták KRNAP 2023.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="v3-0"><span>Na Pecce: kdo najde nejhlubší sklep?</span></label><label class="chk"><input type="checkbox" data-k="v3-1"><span>V muzeu najděte zvíře, které žije v Krkonoších.</span></label><label class="chk"><input type="checkbox" data-k="v3-2"><span>Spočítejte věže a brány hradu Pecka.</span></label></div>
   <button class="donebtn" type="button" data-id="v3" data-nm="Rytíř z Pecky">✓ Splněno – získat odznak</button>
 </div>
 </details>
-<details class="card" data-id="v4" style="--c:#7a4d00">
+<details class="card" data-tags="chuze" data-id="v4" style="--c:#7a4d00">
 <summary><span class="pic" aria-hidden="true">🧗</span><div class="kick">Výlet 4 · na východ</div><div class="ttl">Adršpašské skály</div>
 <div class="chips"><span class="chip">🚗 41 km, 50 min</span><span class="chip">🥾 3,5 km</span><span class="chip">670 Kč</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -475,10 +535,11 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <div class="btns"><a class="btn g" href="https://www.adrspasskeskaly.cz/" target="_blank" rel="noopener">▶ Vstupenky online</a><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=16.1085190,50.6189263&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <ul><li>Tel. <a href="tel:+420491586012">491 586 012</a>. Pevné boty, na schodech bývá mokro.</li></ul>
   <div class="foot">Ceny a časy: adrspasskeskaly.cz a adrspach.cz, ověřeno 29. 10. 2026.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="v4-0"><span>Najděte Gotickou branku.</span></label><label class="chk"><input type="checkbox" data-k="v4-1"><span>Počítejte schody, je jich skoro 2 000!</span></label><label class="chk"><input type="checkbox" data-k="v4-2"><span>Najděte skálu, která vypadá jako zvíře nebo obličej.</span></label></div>
   <button class="donebtn" type="button" data-id="v4" data-nm="Skalní průzkumník">✓ Splněno – získat odznak</button>
 </div>
 </details>
-<details class="card" data-id="v5" style="--c:#b5561e">
+<details class="card" data-tags="dest malo" data-id="v5" style="--c:#b5561e">
 <summary><span class="pic" aria-hidden="true">🦒</span><div class="kick">Výlet 5 · na jih · i do deště</div><div class="ttl">Safari Park Dvůr Králové</div>
 <div class="chips"><span class="chip">🚗 32 km, 45 min</span><span class="chip">celý den</span><span class="chip">780 Kč</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -501,10 +562,11 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.79722,50.43333&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <ul><li>Tel. <a href="tel:+420770123218">770 123 218</a>.</li></ul>
   <div class="foot">safaripark.cz, ověřeno 29. 10. 2026. Hlavní sezóna je dražší (rodinné 590 Kč + 235 Kč za dítě).</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="v5-0"><span>Najděte žirafu a nosorožce.</span></label><label class="chk"><input type="checkbox" data-k="v5-1"><span>Kdo první uvidí lva?</span></label><label class="chk"><input type="checkbox" data-k="v5-2"><span>Které zvíře bylo nejvtipnější? Hlasujte v autě.</span></label></div>
   <button class="donebtn" type="button" data-id="v5" data-nm="Safari ranger">✓ Splněno – získat odznak</button>
 </div>
 </details>
-<details class="card" data-id="v6" style="--c:#5b6b2e">
+<details class="card" data-tags="malo" data-id="v6" style="--c:#5b6b2e">
 <summary><span class="pic" aria-hidden="true">🌾</span><div class="kick">Výlet 6 · na jihovýchod</div><div class="ttl">Babiččino údolí a Ratibořice</div>
 <div class="chips"><span class="chip">🚗 54 km, 70 min</span><span class="chip">🥾 procházka</span><span class="chip">od 460 Kč</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -529,10 +591,11 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=16.0525814,50.4150145&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <ul><li>Ratibořice tel. <a href="tel:+420491452123">491 452 123</a>, Náchod <a href="tel:+420773771818">773 771 818</a>.</li></ul>
   <div class="foot">zamek-ratiborice.cz, zamek-nachod.cz, ověřeno 29. 10. 2026.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="v6-0"><span>Najděte Viktorčin splav.</span></label><label class="chk"><input type="checkbox" data-k="v6-1"><span>Zjistěte, k čemu sloužilo bělidlo.</span></label><label class="chk"><input type="checkbox" data-k="v6-2"><span>Na Rudrově mlýně: jak se mele mouka?</span></label></div>
   <button class="donebtn" type="button" data-id="v6" data-nm="Babiččin vnuk">✓ Splněno – získat odznak</button>
 </div>
 </details>
-<details class="card" data-id="v7" style="--c:#6b4f2a">
+<details class="card" data-tags="chuze" data-id="v7" style="--c:#6b4f2a">
 <summary><span class="pic" aria-hidden="true">🐻</span><div class="kick">Výlet 7 · na západ</div><div class="ttl">Medvědí stezka ve Špindlu</div>
 <div class="chips"><span class="chip">🚗 28 km, 35 min</span><span class="chip">🥾 8,6 km z kopce</span><span class="chip">3–4 h</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
@@ -552,6 +615,7 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   </ul>
   <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.60703,50.73371&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <div class="foot">mestospindleruvmlyn.cz, krkonose.eu, skiareal.cz, ověřeno 29. 10. 2026.</div>
+  <div class="tasks"><h3>🕵️ Úkoly pro kluky</h3><label class="chk"><input type="checkbox" data-k="v7-0"><span>Najděte všech 7 dřevěných medvědů.</span></label><label class="chk"><input type="checkbox" data-k="v7-1"><span>Vyplňte úkoly v mapě od lanovky.</span></label><label class="chk"><input type="checkbox" data-k="v7-2"><span>Kdo dojde dolů první, vybírá zmrzlinu.</span></label></div>
   <button class="donebtn" type="button" data-id="v7" data-nm="Medvědí stopař">✓ Splněno – získat odznak</button>
 </div>
 </details>
@@ -640,17 +704,21 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 </details>
 
 <div class="info"><span class="h">🧭 Navigace</span>Stáhni si aplikaci <b>Mapy.com</b> a v ní offline mapu Krkonoš. Zelená tlačítka otevřou pěší trasu, modrá navigaci autem. Na mapách v appce ukáže tlačítko <b>📍 Kde jsem</b> vaši polohu i bez signálu.</div>
-<div class="info" hidden><span class="h">📱 Appka na ploše</span>Android: v Chromu menu ⋮ → Přidat na plochu / Instalovat. iPhone: v Safari tlačítko Sdílet → Přidat na plochu. Po prvním otevření jede i bez signálu.</div>
-</section>
-<!--x--><div class="info" hidden><span class="h">🧭 Navigace</span>Stáhni si aplikaci <b>Mapy.com</b> a v ní offline mapu Krkonoš. Zelená tlačítka otevřou pěší trasu, modrá navigaci autem. V lese sleduj modrou tečku, značky jsou kontrola.</div>
 <div class="info"><span class="h">📱 Appka na ploše</span>Android: v Chromu menu ⋮ → Přidat na plochu / Instalovat. iPhone: v Safari tlačítko Sdílet → Přidat na plochu. Po prvním otevření jede i bez signálu.</div>
+</section>
 
 <button class="updbtn" type="button" id="upd">🔄 Aktualizovat appku</button>
 <div class="cap" id="updmsg" style="text-align:center">Stáhne nejnovější verzi. Potřebuje internet, odznaky zůstanou.</div>
 <div class="share"><img src="img/qr.png" alt="QR kód s odkazem na appku" width="120" height="120"><div><b>📲 Pošli appku dál</b><span>Ať si druhý naskenuje QR kód fotoaparátem v mobilu, otevře se mu appka. Pak stačí Přidat na plochu.</span></div></div>
-<footer>Mapy © přispěvatelé OpenStreetMap · verze 6 · 29. 10. 2026</footer>
+<footer>Mapy © přispěvatelé OpenStreetMap · verze 7 · 29. 10. 2026</footer>
 </div>
 
+<nav class="bnav" role="tablist"><div class="in">
+  <button role="tab" aria-selected="true" data-p="dd"><span class="i">☀️</span>Dnes</button>
+  <button role="tab" aria-selected="false" data-p="pp"><span class="i">🥾</span>Pěšky</button>
+  <button role="tab" aria-selected="false" data-p="vv"><span class="i">🚗</span>Autem</button>
+  <button role="tab" aria-selected="false" data-p="ii"><span class="i">ℹ️</span>Info</button>
+</div></nav>
 <script>
 document.querySelectorAll('.tabs button').forEach(function(b){
   b.addEventListener('click',function(){
@@ -678,7 +746,7 @@ document.querySelectorAll('.donebtn').forEach(function(b){
   b.addEventListener('click',function(){
     if(done[b.dataset.id]){delete done[b.dataset.id];}else{done[b.dataset.id]=1;}
     save(done);render();
-    if(done[b.dataset.id]){document.getElementById('badges').scrollIntoView({behavior:'smooth'});}
+    if(done[b.dataset.id]&&navigator.vibrate){try{navigator.vibrate(80)}catch(e){}}
   });
 });
 render();
@@ -720,6 +788,114 @@ document.querySelectorAll('.gpsbtn').forEach(function(b){
     }
   });
 });
+
+/* ===== fáze 2 ===== */
+function lsGet(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function showPanel(id){
+  document.querySelectorAll('nav.bnav button').forEach(function(x){x.setAttribute('aria-selected',x.dataset.p===id?'true':'false');});
+  document.querySelectorAll('.panel').forEach(function(p){p.hidden=(p.id!==id);});
+  window.scrollTo({top:0});
+}
+document.querySelectorAll('nav.bnav button').forEach(function(b){b.addEventListener('click',function(){showPanel(b.dataset.p);});});
+function openCard(id){
+  var c=document.querySelector('details.card[data-id="'+id+'"]'); if(!c) return;
+  showPanel(c.closest('.panel').id); c.open=true; setTimeout(function(){c.scrollIntoView({behavior:'smooth',block:'start'});},60);
+}
+/* filtry */
+document.querySelectorAll('.filters[data-for]').forEach(function(f){
+  f.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click',function(){
+      f.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      var t=b.dataset.f;
+      document.querySelectorAll('#'+f.dataset.for+' details.card').forEach(function(c){
+        c.hidden=!!t && (' '+(c.dataset.tags||'')+' ').indexOf(' '+t+' ')<0;
+      });
+    });
+  });
+});
+/* úkoly */
+var TK=lsGet('cd2026-tasks',{});
+document.querySelectorAll('.tasks input').forEach(function(i){
+  i.checked=!!TK[i.dataset.k];
+  i.addEventListener('change',function(){if(i.checked)TK[i.dataset.k]=1;else delete TK[i.dataset.k];lsSet('cd2026-tasks',TK);});
+});
+/* s sebou */
+var PACK=["Pití (aspoň 0,5 l na osobu)","Svačina a něco sladkého","Pláštěnky nebo bundy do deště","Čepice a rukavice (nahoře fouká)","Čelovka nebo baterka (podzemí, šero)","Nabitý mobil + powerbanka","Náplasti a kapesníky","Hotovost (lodička, stánky, parkování)","Kartičky pojišťovny","Offline mapa Krkonoš v Mapy.com"];
+var PK=lsGet('cd2026-pack',{});
+function renderPack(){
+  var h='';PACK.forEach(function(t,i){h+='<label class="chk"><input type="checkbox" data-i="'+i+'"'+(PK[i]?' checked':'')+'><span>'+t+'</span></label>';});
+  var el=document.getElementById('pack');el.innerHTML=h;
+  el.querySelectorAll('input').forEach(function(x){x.addEventListener('change',function(){if(x.checked)PK[x.dataset.i]=1;else delete PK[x.dataset.i];lsSet('cd2026-pack',PK);});});
+}
+renderPack();
+document.getElementById('packreset').addEventListener('click',function(){PK={};lsSet('cd2026-pack',PK);renderPack();});
+/* dnes: datum, západ slunce */
+var D=new Date();
+var DNY=['neděle','pondělí','úterý','středa','čtvrtek','pátek','sobota'];
+document.getElementById('dtitle').textContent='Dnes je '+DNY[D.getDay()]+' '+D.getDate()+'. '+(D.getMonth()+1)+'.';
+function sunset(d){
+  var lat=50.636,lon=15.709;
+  var start=new Date(Date.UTC(d.getFullYear(),0,1));var N=Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())-start)/864e5)+1;
+  var g=2*Math.PI/365*(N-1);
+  var eq=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+  var dec=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+  var r=Math.PI/180;
+  var ha=Math.acos(Math.cos(90.833*r)/(Math.cos(lat*r)*Math.cos(dec))-Math.tan(lat*r)*Math.tan(dec))/r;
+  var utcMin=720-4*(lon-ha)-eq;
+  var t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate(),0,0,0)+utcMin*60000);
+  return ('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2);
+}
+document.getElementById('sunset').textContent=sunset(D);
+/* dnes otevřeno */
+function md(d){return (d.getMonth()+1)*100+d.getDate();}
+function inList(d,arr){var k=md(d);for(var i=0;i<arr.length;i++){var a=arr[i];if(typeof a==='number'){if(a===k)return true;}else if(k>=a[0]&&k<=a[1])return true;}return false;}
+var Y26=D.getFullYear()===2026;
+var PLACES=[
+ {n:'Stezka korunami stromů',c:'v2',f:function(d,m,w){if(Y26&&inList(d,[[1109,1111]]))return null;if(m===10)return '9:30–17';if(m===11)return '9:30–16';return 'denně, ověř čas';}},
+ {n:'Tvrz Stachelberg',c:'v2',f:function(d,m,w){var we=(w===0||w===6);if(m===7||m===8)return '10–17';if(m===6&&w!==1&&w!==2&&w!==3)return '10–17';if((m===4||m===5||m===9||m===10)&&we)return '10–17';if((m>=11||m<=3)&&w===6)return 'prohlídka 13:00';return null;}},
+ {n:'Podzemí Josefov',c:'v1',f:function(d,m,w){var we=(w===0||w===6);if(m===7||m===8)return '9–12, 13–18';if(m===6&&w!==1)return '9–12, 13–17';if((m===4||m===5||m===9||m===10)&&we)return '9–12, 13–17';return null;}},
+ {n:'Hospital Kuks',c:'v1',f:function(d,m,w){if((m===9||m===10)&&w!==1)return '9–17';if(m===11&&(w===0||w===6))return '9–16';if(Y26&&inList(d,[1117]))return '9–16';return null;}},
+ {n:'Hrad Pecka',c:'v3',f:function(d,m,w){if(m>=5&&m<=9&&w!==1)return '9–17';if((m===4||m===10)&&(w===0||w===6))return '9–16';return null;}},
+ {n:'Muzeum Krkonoš Vrchlabí',c:'v3',f:function(d,m,w){return w===1?null:'9–17 (údaj 2023)';}},
+ {n:'Lanovka na Černou horu',c:'p4',f:function(d,m,w){if(Y26){return inList(d,[[1024,1101],[1107,1108],[1114,1117]])?'9–16':null;}return 'ověř provoz';}},
+ {n:'Lanovka Medvědín (Medvědí stezka)',c:'v7',f:function(d,m,w){if(Y26){if(inList(d,[[1024,1031]]))return '9–17';return inList(d,[1101,[1107,1108],[1114,1117]])?'9–16':null;}return 'ověř provoz';}},
+ {n:'Adršpašské skály',c:'v4',f:function(d,m,w){if(m===7||m===8)return '8–20';if(m>=4&&m<=10)return '8–18';return '8–16';}},
+ {n:'Safari Park Dvůr Králové',c:'v5',f:function(d,m,w){if(Y26&&md(d)<=1101&&m>=10)return '9–18';if(m>=11||m<=3)return '9–16';return '9–18';}},
+ {n:'Zámek Ratibořice',c:'v6',f:function(d,m,w){if(Y26){return inList(d,[[1029,1101],[1227,1230]])?'10–15':null;}return 'ověř';}}
+];
+var op='',cl='',openIds={};
+PLACES.forEach(function(p){
+  var h=p.f(D,D.getMonth()+1,D.getDay());
+  if(h){op+='<li data-c="'+p.c+'"><span>'+p.n+'</span><span class="h">'+h+'</span></li>';openIds[p.c]=1;}
+  else cl+='<li class="no"><span>'+p.n+'</span><span class="h">zavřeno</span></li>';
+});
+var ol=document.getElementById('open');ol.innerHTML=op+cl;
+ol.querySelectorAll('li[data-c]').forEach(function(li){li.addEventListener('click',function(){openCard(li.dataset.c);});});
+/* tip na dnes */
+function setTip(rain){
+  var t=document.getElementById('tip'),id,txt;
+  if(rain){id=openIds.v5?'v5':'v3';txt=rain===2?'Hlásí déšť. Zkuste něco pod střechu:':'Možná sprchne. Něco napůl pod střechou:';}
+  else if(openIds.p4){id='p4';txt='Lanovka na Černou horu jede! Nahoře výhledy a dětský park:';}
+  else if(D.getDay()===0||D.getDay()===6){id=openIds.v2?'v2':'v4';txt='Víkend, hrady a pevnosti mají otevřeno:';}
+  else {id='p1';txt='Pohodová procházka přímo od chaty:';}
+  var c=document.querySelector('details.card[data-id="'+id+'"] .ttl');
+  t.innerHTML='<b>'+(c?c.textContent:'')+'</b>'+txt+' klepni pro detail.';
+  t.onclick=function(){openCard(id);};
+}
+setTip(0);
+/* počasí (jen online) */
+var WX={0:'☀️ jasno',1:'🌤 skoro jasno',2:'⛅ polojasno',3:'☁️ zataženo',45:'🌫 mlha',48:'🌫 mlha',51:'🌦 mrholení',53:'🌦 mrholení',55:'🌧 mrholení',61:'🌧 déšť',63:'🌧 déšť',65:'🌧 silný déšť',71:'🌨 sníh',73:'🌨 sníh',75:'❄️ sněžení',80:'🌦 přeháňky',81:'🌧 přeháňky',82:'⛈ přeháňky',95:'⛈ bouřky'};
+if(navigator.onLine&&window.fetch){
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=50.636&longitude=15.709&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FPrague&forecast_days=2',{cache:'no-store'})
+  .then(function(r){return r.json();}).then(function(j){
+    var d=j.daily,c=d.weathercode[0];
+    document.getElementById('wx').textContent=Math.round(d.temperature_2m_min[0])+' až '+Math.round(d.temperature_2m_max[0])+' °C';
+    document.getElementById('wx2').textContent=(WX[c]||'')+' · srážky '+d.precipitation_probability_max[0]+' %';
+    var p=d.precipitation_probability_max[0];
+    if(p>=60)setTip(2);else if(p>=35)setTip(1);
+  }).catch(function(){document.getElementById('wx').textContent='–';document.getElementById('wx2').textContent='jen s internetem';});
+}else{document.getElementById('wx').textContent='–';document.getElementById('wx2').textContent='jen s internetem';}
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js');});}
 </script>
 </body>
