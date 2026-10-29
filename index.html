@@ -80,6 +80,7 @@ details.card.done>summary .pic::after{content:"✓";position:absolute;right:-4px
 .badge{cursor:pointer;text-align:center;font-size:11.5px;line-height:1.25;color:var(--soft);padding:8px 2px 6px;border-radius:12px;background:#f4f1ea}
 .badge .e{display:block;font-size:30px;filter:grayscale(1);opacity:.35;margin-bottom:3px;transition:all .3s}
 .badge.on{background:#fff4cf;color:var(--ink);font-weight:700;box-shadow:inset 0 0 0 2px #e3b505}
+.badge .lv{display:block;color:#c99a06;font-size:12px;letter-spacing:1px;margin-top:2px}
 .badge.on .e{filter:none;opacity:1;transform:scale(1.08)}
 .champ{display:none;margin-top:10px;text-align:center;font-weight:800;color:#7a4d00;background:#fff4cf;border-radius:10px;padding:8px}
 .champ.on{display:block}
@@ -174,21 +175,21 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="small" style="margin-top:6px">Podle údajů ověřených 29. 10. 2026. Klepnutím otevřeš výlet. Příští rok je potřeba časy znovu ověřit.</div></div>
 <div class="badges" id="badges">
   <div class="bh"><b>🏅 Odznaky výpravy</b><span id="bcount">0 / 13</span></div>
-  <div class="small" style="margin:-4px 0 8px">Klepni na odznak a appka tě přenese k výletu, kde ho získáš.</div>
+  <div class="small" style="margin:-4px 0 8px">Klepni na odznak a appka tě přenese k výletu, kde ho získáš. Hvězdičky = jak těžké je ho získat. Kdo nasbírá všech 13?</div>
   <div class="bgrid">
-    <div class="badge" data-b="p1"><span class="e">🪨</span>Hlídka u lomu</div>
-    <div class="badge" data-b="p2"><span class="e">⛏️</span>Hornická výprava</div>
-    <div class="badge" data-b="p3"><span class="e">🏔️</span>Vrchol Tetřevích bud</div>
-    <div class="badge" data-b="p4"><span class="e">🌿</span>Tajemství rašeliniště</div>
-    <div class="badge" data-b="p5"><span class="e">🥾</span>Cesta k Hoffmannovkám</div>
-    <div class="badge" data-b="p6"><span class="e">🔦</span>Stopy horníků</div>
-    <div class="badge" data-b="v1"><span class="e">🗿</span>Lov na sochy</div>
-    <div class="badge" data-b="v2"><span class="e">🪖</span>Bunkrová mise</div>
-    <div class="badge" data-b="v3"><span class="e">🏰</span>Hradní výprava</div>
-    <div class="badge" data-b="v4"><span class="e">🧗</span>Skalní labyrint</div>
-    <div class="badge" data-b="v5"><span class="e">🦒</span>Safari výprava</div>
-    <div class="badge" data-b="v6"><span class="e">🌾</span>Babiččino údolí</div>
-    <div class="badge" data-b="v7"><span class="e">🐻</span>Medvědí stopa</div>
+    <div class="badge" data-b="p1"><span class="e">🪨</span>Tajemství lomu<span class="lv">★</span></div>
+    <div class="badge" data-b="p2"><span class="e">⛏️</span>Poklad svaté Barbory<span class="lv">★</span></div>
+    <div class="badge" data-b="p3"><span class="e">🏔️</span>Výprava do oblak<span class="lv">★★★</span></div>
+    <div class="badge" data-b="p4"><span class="e">🌿</span>Kouzelná bažina<span class="lv">★★</span></div>
+    <div class="badge" data-b="p5"><span class="e">🥾</span>Výstup na Vendlovku<span class="lv">★★★</span></div>
+    <div class="badge" data-b="p6"><span class="e">🔦</span>Hornické tajemství<span class="lv">★★</span></div>
+    <div class="badge" data-b="v1"><span class="e">🗿</span>Kamenní obři z lesa<span class="lv">★★</span></div>
+    <div class="badge" data-b="v2"><span class="e">🪖</span>Tajná pevnost<span class="lv">★★</span></div>
+    <div class="badge" data-b="v3"><span class="e">🏰</span>Hradní sklepení<span class="lv">★</span></div>
+    <div class="badge" data-b="v4"><span class="e">🧗</span>Skalní bludiště<span class="lv">★★</span></div>
+    <div class="badge" data-b="v5"><span class="e">🦒</span>Africká výprava<span class="lv">★</span></div>
+    <div class="badge" data-b="v6"><span class="e">🌾</span>Kouzelné údolí<span class="lv">★</span></div>
+    <div class="badge" data-b="v7"><span class="e">🐻</span>Lov na 7 medvědů<span class="lv">★★</span></div>
   </div>
   <div class="champ" id="champ">🎉 Všech 13 odznaků! Jste Krkonošští mistři! 🎉</div>
 </div>
@@ -224,7 +225,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.69978,50.63459;15.69625,50.63454;15.69802,50.64032&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM. Délku 3,7 km potvrzuje i leták KRNAP.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p1-0"><span>Spočítejte, kolik zelených rohů (značek) cestou najdete.</span></label><label class="chk"><input type="checkbox" data-k="p1-1"><span>Na vyhlídce najděte lanovky a sjezdovku.</span></label><label class="chk"><input type="checkbox" data-k="p1-2"><span>Na rozcestníku přečtěte, kolik metrů nad mořem jste.</span></label></div>
-  <button class="donebtn" type="button" data-id="p1" data-nm="Hlídka u lomu">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="p1" data-nm="Tajemství lomu">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
@@ -249,7 +250,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.71558,50.63824;15.733231,50.632265;15.71289,50.6277;15.70987,50.6348&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p2-0"><span>Kdo první uvidí červený roh, vede výpravu k další značce.</span></label><label class="chk"><input type="checkbox" data-k="p2-1"><span>Na vyhlídce najděte náměstí a chatu.</span></label><label class="chk"><input type="checkbox" data-k="p2-2"><span>Svatá Barbora je patronka horníků. Zkuste zjistit proč.</span></label></div>
-  <button class="donebtn" type="button" data-id="p2" data-nm="Hornická výprava">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="p2" data-nm="Poklad svaté Barbory">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
@@ -283,7 +284,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   </ul>
   <div class="foot">Délka, značení a rozcestníky z OpenStreetMapu (podklad i pro Mapy.com), převýšení z EU-DEM. V terénu se řiď značkami, mapa je kontrola.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p3-0"><span>Najděte všechny 3 barvy značek: žlutou, zelenou a modrou.</span></label><label class="chk"><input type="checkbox" data-k="p3-1"><span>Najděte rozcestník s nejvyšší výškou (Hrnčířské boudy, 1 070 m).</span></label><label class="chk"><input type="checkbox" data-k="p3-2"><span>Na Tetřevích boudách nakreslete, jak asi vypadá tetřev.</span></label></div>
-  <button class="donebtn" type="button" data-id="p3" data-nm="Vrchol Tetřevích bud">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="p3" data-nm="Výprava do oblak">✓ Splněno – získat odznak</button>
 </div>
 </details>
 <details class="card" data-tags="kratke jidlo" data-id="p4" style="--c:#2f6b45">
@@ -320,7 +321,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <li>Na rašeliništi je stezka každý rok zavřená 15. 3.–31. 5. Kočárek ne.</li></ul>
   <div class="foot">Lanovka a ceny: leto.skiresort.cz, ověřeno 29. 10. 2026. Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p4-0"><span>V kabince odhadněte, jak vysoko nad zemí jste.</span></label><label class="chk"><input type="checkbox" data-k="p4-1"><span>Na Hubertově vyhlídce najděte Sněžku, nejvyšší horu Česka.</span></label><label class="chk"><input type="checkbox" data-k="p4-2"><span>Na rašeliništi jděte jen po dřevěném chodníku a najděte jezírko.</span></label></div>
-  <button class="donebtn" type="button" data-id="p4" data-nm="Tajemství rašeliniště">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="p4" data-nm="Kouzelná bažina">✓ Splněno – získat odznak</button>
 </div>
 </details>
 <details class="card" data-tags="delsi jidlo chata" data-id="p5" style="--c:#9a6700">
@@ -344,7 +345,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.75589,50.63243&waypoints=15.73385,50.6456;15.74637,50.6379&routeType=foot_hiking" target="_blank" rel="noopener">▶ Trasa v Mapy.com</a></div>
   <div class="foot">Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p5-0"><span>Kdo první dojde na Vendlovku (1 000 m), je král nebo královna kopce.</span></label><label class="chk"><input type="checkbox" data-k="p5-1"><span>Najděte Stezku korunami, z kopce bývá vidět.</span></label><label class="chk"><input type="checkbox" data-k="p5-2"><span>Na Hoffmannově boudě: dobrý oběd jako odměna!</span></label></div>
-  <button class="donebtn" type="button" data-id="p5" data-nm="Cesta k Hoffmannovkám">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="p5" data-nm="Výstup na Vendlovku">✓ Splněno – získat odznak</button>
 </div>
 </details>
 <details class="card" data-tags="delsi chata" data-id="p6" style="--c:#0969da">
@@ -368,7 +369,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <ul><li>Muzeum Podzemí Krkonoš (na úřadě v Černém Dole): út 10–12, čt 12–14, jen po rezervaci na <a href="tel:+420734403332">734 403 332</a>.</li></ul>
   <div class="foot">Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p6-0"><span>Spočítejte, kolikrát uvidíte modrou značku.</span></label><label class="chk"><input type="checkbox" data-k="p6-1"><span>Na naučné stezce zjistěte z tabulí, co se tu těžilo.</span></label><label class="chk"><input type="checkbox" data-k="p6-2"><span>Hledejte v lese stopy po hornících.</span></label></div>
-  <button class="donebtn" type="button" data-id="p6" data-nm="Stopy horníků">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="p6" data-nm="Hornické tajemství">✓ Splněno – získat odznak</button>
 </div>
 </details>
 </section>
@@ -424,7 +425,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   </ul>
   <div class="foot">Ceny a časy z oficiálních webů pevnostjosefov.cz a hospital-kuks.cz, ověřeno 29. 10. 2026.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v1-0"><span>V podzemí Josefova: kolik schodů sejdete dolů?</span></label><label class="chk"><input type="checkbox" data-k="v1-1"><span>V Kuksu najděte sochu, která se tváří nejhrozivěji.</span></label><label class="chk"><input type="checkbox" data-k="v1-2"><span>U Betléma najděte jeskyni poustevníka Garina.</span></label></div>
-  <button class="donebtn" type="button" data-id="v1" data-nm="Lov na sochy">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="v1" data-nm="Kamenní obři z lesa">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
@@ -471,7 +472,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   </ul>
   <div class="foot">Ceny a časy z oficiálních webů stachelberg.cz a treetop-walks.com/krkonose, ověřeno 29. 10. 2026. Stezka 9.–11. 11. zavřená.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v2-0"><span>Na Stezce korunami: dojedete tobogánem dolů?</span></label><label class="chk"><input type="checkbox" data-k="v2-1"><span>U Stachelbergu spočítejte bunkry, které cestou uvidíte.</span></label><label class="chk"><input type="checkbox" data-k="v2-2"><span>Vylezte na rozhlednu Eliška.</span></label></div>
-  <button class="donebtn" type="button" data-id="v2" data-nm="Bunkrová mise">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="v2" data-nm="Tajná pevnost">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
@@ -509,7 +510,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   </ul>
   <div class="foot">Pecka: hradpecka.cz, ověřeno 29. 10. 2026. Muzeum: leták KRNAP 2023.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v3-0"><span>Na Pecce: kdo najde nejhlubší sklep?</span></label><label class="chk"><input type="checkbox" data-k="v3-1"><span>V muzeu najděte zvíře, které žije v Krkonoších.</span></label><label class="chk"><input type="checkbox" data-k="v3-2"><span>Spočítejte věže a brány hradu Pecka.</span></label></div>
-  <button class="donebtn" type="button" data-id="v3" data-nm="Hradní výprava">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="v3" data-nm="Hradní sklepení">✓ Splněno – získat odznak</button>
 </div>
 </details>
 <details class="card" data-tags="chuze" data-id="v4" style="--c:#7a4d00">
@@ -538,7 +539,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <ul><li>Tel. <a href="tel:+420491586012">491 586 012</a>. Pevné boty, na schodech bývá mokro.</li></ul>
   <div class="foot">Ceny a časy: adrspasskeskaly.cz a adrspach.cz, ověřeno 29. 10. 2026.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v4-0"><span>Najděte Gotickou branku.</span></label><label class="chk"><input type="checkbox" data-k="v4-1"><span>Počítejte schody, je jich skoro 2 000!</span></label><label class="chk"><input type="checkbox" data-k="v4-2"><span>Najděte skálu, která vypadá jako zvíře nebo obličej.</span></label></div>
-  <button class="donebtn" type="button" data-id="v4" data-nm="Skalní labyrint">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="v4" data-nm="Skalní bludiště">✓ Splněno – získat odznak</button>
 </div>
 </details>
 <details class="card" data-tags="dest malo" data-id="v5" style="--c:#b5561e">
@@ -565,7 +566,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <ul><li>Tel. <a href="tel:+420770123218">770 123 218</a>.</li></ul>
   <div class="foot">safaripark.cz, ověřeno 29. 10. 2026. Hlavní sezóna je dražší (rodinné 590 Kč + 235 Kč za dítě).</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v5-0"><span>Najděte žirafu a nosorožce.</span></label><label class="chk"><input type="checkbox" data-k="v5-1"><span>Kdo první uvidí lva?</span></label><label class="chk"><input type="checkbox" data-k="v5-2"><span>Které zvíře bylo nejvtipnější? Hlasujte v autě.</span></label></div>
-  <button class="donebtn" type="button" data-id="v5" data-nm="Safari výprava">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="v5" data-nm="Africká výprava">✓ Splněno – získat odznak</button>
 </div>
 </details>
 <details class="card" data-tags="malo" data-id="v6" style="--c:#5b6b2e">
@@ -594,7 +595,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <ul><li>Ratibořice tel. <a href="tel:+420491452123">491 452 123</a>, Náchod <a href="tel:+420773771818">773 771 818</a>.</li></ul>
   <div class="foot">zamek-ratiborice.cz, zamek-nachod.cz, ověřeno 29. 10. 2026.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v6-0"><span>Najděte Viktorčin splav.</span></label><label class="chk"><input type="checkbox" data-k="v6-1"><span>Zjistěte, k čemu sloužilo bělidlo.</span></label><label class="chk"><input type="checkbox" data-k="v6-2"><span>Na Rudrově mlýně: jak se mele mouka?</span></label></div>
-  <button class="donebtn" type="button" data-id="v6" data-nm="Babiččino údolí">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="v6" data-nm="Kouzelné údolí">✓ Splněno – získat odznak</button>
 </div>
 </details>
 <details class="card" data-tags="chuze" data-id="v7" style="--c:#6b4f2a">
@@ -618,7 +619,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.60703,50.73371&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <div class="foot">mestospindleruvmlyn.cz, krkonose.eu, skiareal.cz, ověřeno 29. 10. 2026.</div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v7-0"><span>Najděte všech 7 dřevěných medvědů.</span></label><label class="chk"><input type="checkbox" data-k="v7-1"><span>Vyplňte úkoly v mapě od lanovky.</span></label><label class="chk"><input type="checkbox" data-k="v7-2"><span>Kdo dojde dolů první, vybírá zmrzlinu.</span></label></div>
-  <button class="donebtn" type="button" data-id="v7" data-nm="Medvědí stopa">✓ Splněno – získat odznak</button>
+  <button class="donebtn" type="button" data-id="v7" data-nm="Lov na 7 medvědů">✓ Splněno – získat odznak</button>
 </div>
 </details>
 </section>
@@ -712,7 +713,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
 <button class="updbtn" type="button" id="upd">🔄 Aktualizovat appku</button>
 <div class="cap" id="updmsg" style="text-align:center">Stáhne nejnovější verzi. Potřebuje internet, odznaky zůstanou.</div>
 <div class="share"><img src="img/qr.png" alt="QR kód s odkazem na appku" width="120" height="120"><div><b>📲 Pošli appku dál</b><span>Ať si druhý naskenuje QR kód fotoaparátem v mobilu, otevře se mu appka. Pak stačí Přidat na plochu.</span></div></div>
-<footer>Mapy © přispěvatelé OpenStreetMap · verze 10 · 29. 10. 2026</footer>
+<footer>Mapy © přispěvatelé OpenStreetMap · verze 11 · 29. 10. 2026</footer>
 </div>
 
 <nav class="bnav" role="tablist"><div class="in">
