@@ -1,4 +1,4 @@
-const C="cerny-dul-2026-v11";
+const C="cerny-dul-2026-v12";
 const A=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png",
 "./img/p1.jpg","./img/p2.jpg","./img/p3.jpg","./img/v1-auto.jpg","./img/v1-pesky.jpg","./img/v2-auto.jpg","./img/v2-pesky.jpg","./img/v3-auto.jpg","./img/qr.png","./img/p4.jpg","./img/p5.jpg","./img/p6.jpg","./img/v4-auto.jpg","./img/v5-auto.jpg","./img/v6-auto.jpg","./img/p7-auto.jpg"];
 // cache:"reload" = stáhnout ze sítě, ne ze staré paměti prohlížeče

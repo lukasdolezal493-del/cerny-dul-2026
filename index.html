@@ -133,6 +133,8 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
 .small{font-size:12.5px;color:var(--soft)}
 .tip{background:#eef7f0;border-left:4px solid var(--g);border-radius:8px;padding:10px 12px;font-size:15px;cursor:pointer}
 .tip b{display:block}
+.pk{background:#fff8ec;border:1.5px solid #f0d9a8;border-radius:12px;padding:10px 12px;margin-top:14px}
+.pk h3{border:0;margin:0 0 4px;padding:0;font-size:15.5px}
 </style>
 </head>
 <body>
@@ -193,7 +195,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   </div>
   <div class="champ" id="champ">🎉 Všech 13 odznaků! Jste Krkonošští mistři! 🎉</div>
 </div>
-<div class="box"><h2>🎒 S sebou na výlet</h2><div id="pack"></div>
+<div class="box"><h2>🎒 Vždycky s sebou</h2><div class="small" style="margin:-4px 0 6px">Základ na každý výlet. Co je potřeba navíc, najdeš přímo u výletu.</div><div id="pack"></div>
   <button class="filters" style="all:unset;color:var(--b);font-weight:650;font-size:14px;cursor:pointer" id="packreset">↺ Odškrtnout vše znovu</button></div>
 </section>
 <section class="panel" id="pp" hidden>
@@ -224,6 +226,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   </ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.69978,50.63459;15.69625,50.63454;15.69802,50.64032&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM. Délku 3,7 km potvrzuje i leták KRNAP.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="p1-0"><span>Pití a svačina (na trase nic není)</span></label><label class="chk"><input type="checkbox" data-k="p1-1"><span>Pevné boty (okraj lomu je strmý)</span></label><label class="chk"><input type="checkbox" data-k="p1-2"><span>Pláštěnka</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p1-0"><span>Spočítejte, kolik zelených rohů (značek) cestou najdete.</span></label><label class="chk"><input type="checkbox" data-k="p1-1"><span>Na vyhlídce najděte lanovky a sjezdovku.</span></label><label class="chk"><input type="checkbox" data-k="p1-2"><span>Na rozcestníku přečtěte, kolik metrů nad mořem jste.</span></label></div>
   <button class="donebtn" type="button" data-id="p1" data-nm="Tajemství lomu">✓ Splněno – získat odznak</button>
 </div>
@@ -249,6 +252,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <ul><li>Na trase žádná bouda není. Na startu a v cíli: <b>Restaurace Pošta</b> na náměstí (denně 8–10 a 11–22, tel. <a href="tel:+420730590830">730 590 830</a>).</li></ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.71558,50.63824;15.733231,50.632265;15.71289,50.6277;15.70987,50.6348&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="p2-0"><span>Pití a svačina (na trase nic není)</span></label><label class="chk"><input type="checkbox" data-k="p2-1"><span>Pláštěnka</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p2-0"><span>Kdo první uvidí červený roh, vede výpravu k další značce.</span></label><label class="chk"><input type="checkbox" data-k="p2-1"><span>Na vyhlídce najděte náměstí a chatu.</span></label><label class="chk"><input type="checkbox" data-k="p2-2"><span>Svatá Barbora je patronka horníků. Zkuste zjistit proč.</span></label></div>
   <button class="donebtn" type="button" data-id="p2" data-nm="Poklad svaté Barbory">✓ Splněno – získat odznak</button>
 </div>
@@ -283,6 +287,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
     <li>Nahoře je o 450 m výš, takže zhruba o 3 °C chladněji a víc fouká. Vezměte čepice a vrstvy.</li>
   </ul>
   <div class="foot">Délka, značení a rozcestníky z OpenStreetMapu (podklad i pro Mapy.com), převýšení z EU-DEM. V terénu se řiď značkami, mapa je kontrola.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="p3-0"><span>Pití aspoň 1 l na osobu (celý den, +530 m)</span></label><label class="chk"><input type="checkbox" data-k="p3-1"><span>Svačina na cestu nahoru</span></label><label class="chk"><input type="checkbox" data-k="p3-2"><span>Peníze nebo karta na oběd na Tetřevích boudách</span></label><label class="chk"><input type="checkbox" data-k="p3-3"><span>Čepice, rukavice a teplá vrstva (nahoře je chladněji a fouká)</span></label><label class="chk"><input type="checkbox" data-k="p3-4"><span>Pláštěnky</span></label><label class="chk"><input type="checkbox" data-k="p3-5"><span>Čelovka pro jistotu (slunce zapadá kolem 16:40)</span></label><label class="chk"><input type="checkbox" data-k="p3-6"><span>Náplasti na puchýře</span></label><label class="chk"><input type="checkbox" data-k="p3-7"><span>Nabitý mobil (offline mapa, GPS)</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p3-0"><span>Najděte všechny 3 barvy značek: žlutou, zelenou a modrou.</span></label><label class="chk"><input type="checkbox" data-k="p3-1"><span>Najděte rozcestník s nejvyšší výškou (Hrnčířské boudy, 1 070 m).</span></label><label class="chk"><input type="checkbox" data-k="p3-2"><span>Na Tetřevích boudách nakreslete, jak asi vypadá tetřev.</span></label></div>
   <button class="donebtn" type="button" data-id="p3" data-nm="Výprava do oblak">✓ Splněno – získat odznak</button>
 </div>
@@ -320,6 +325,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <ul><li><span class="warn">Ověř před cestou:</span> web lanovky zmiňuje výměnu dřevěného chodníku na rašeliništi. Když bude zavřený, jděte od Černé boudy po žluté a modré kolem Velkých Pardubických bud.</li>
   <li>Na rašeliništi je stezka každý rok zavřená 15. 3.–31. 5. Kočárek ne.</li></ul>
   <div class="foot">Lanovka a ceny: leto.skiresort.cz, ověřeno 29. 10. 2026. Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="p4-0"><span>Jízdenky na lanovku (online levnější) nebo peníze/karta</span></label><label class="chk"><input type="checkbox" data-k="p4-1"><span>Peníze na parkoviště P1 (130 Kč)</span></label><label class="chk"><input type="checkbox" data-k="p4-2"><span>Čepice, rukavice a bunda (1 300 m, fouká)</span></label><label class="chk"><input type="checkbox" data-k="p4-3"><span>Pevné boty (dřevěné chodníky za mokra kloužou)</span></label><label class="chk"><input type="checkbox" data-k="p4-4"><span>Svačina a pití</span></label><label class="chk"><input type="checkbox" data-k="p4-5"><span>Hlídat čas: poslední jízda dolů v 16:00</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p4-0"><span>V kabince odhadněte, jak vysoko nad zemí jste.</span></label><label class="chk"><input type="checkbox" data-k="p4-1"><span>Na Hubertově vyhlídce najděte Sněžku, nejvyšší horu Česka.</span></label><label class="chk"><input type="checkbox" data-k="p4-2"><span>Na rašeliništi jděte jen po dřevěném chodníku a najděte jezírko.</span></label></div>
   <button class="donebtn" type="button" data-id="p4" data-nm="Kouzelná bažina">✓ Splněno – získat odznak</button>
 </div>
@@ -344,6 +350,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <ul><li><b>Hoffmannova bouda</b>: domácí česká kuchyně, dětský koutek, uváděno denně 11–22 (údaj může být starý), tel. <a href="tel:+420777946434">777 946 434</a>.</li></ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.75589,50.63243&waypoints=15.73385,50.6456;15.74637,50.6379&routeType=foot_hiking" target="_blank" rel="noopener">▶ Trasa v Mapy.com</a></div>
   <div class="foot">Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="p5-0"><span>Pití aspoň 1 l na osobu (hned na začátku +400 m)</span></label><label class="chk"><input type="checkbox" data-k="p5-1"><span>Svačina</span></label><label class="chk"><input type="checkbox" data-k="p5-2"><span>Peníze nebo karta na oběd na Hoffmannově boudě</span></label><label class="chk"><input type="checkbox" data-k="p5-3"><span>Peníze na Stezku korunami, pokud ji spojíte (1 350 Kč)</span></label><label class="chk"><input type="checkbox" data-k="p5-4"><span>Pláštěnky</span></label><label class="chk"><input type="checkbox" data-k="p5-5"><span>Náplasti</span></label><label class="chk"><input type="checkbox" data-k="p5-6"><span>Domluvit, kdo pro vás dojede autem</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p5-0"><span>Kdo první dojde na Vendlovku (1 000 m), je král nebo královna kopce.</span></label><label class="chk"><input type="checkbox" data-k="p5-1"><span>Najděte Stezku korunami, z kopce bývá vidět.</span></label><label class="chk"><input type="checkbox" data-k="p5-2"><span>Na Hoffmannově boudě: dobrý oběd jako odměna!</span></label></div>
   <button class="donebtn" type="button" data-id="p5" data-nm="Výstup na Vendlovku">✓ Splněno – získat odznak</button>
 </div>
@@ -368,6 +375,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70802,50.6579;15.7071651,50.6600708;15.70802,50.6579&routeType=foot_hiking" target="_blank" rel="noopener">▶ Trasa v Mapy.com</a></div>
   <ul><li>Muzeum Podzemí Krkonoš (na úřadě v Černém Dole): út 10–12, čt 12–14, jen po rezervaci na <a href="tel:+420734403332">734 403 332</a>.</li></ul>
   <div class="foot">Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="p6-0"><span>Pití a svačina (na trase nic není)</span></label><label class="chk"><input type="checkbox" data-k="p6-1"><span>Pevné boty</span></label><label class="chk"><input type="checkbox" data-k="p6-2"><span>Pláštěnka</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="p6-0"><span>Spočítejte, kolikrát uvidíte modrou značku.</span></label><label class="chk"><input type="checkbox" data-k="p6-1"><span>Na naučné stezce zjistěte z tabulí, co se tu těžilo.</span></label><label class="chk"><input type="checkbox" data-k="p6-2"><span>Hledejte v lese stopy po hornících.</span></label></div>
   <button class="donebtn" type="button" data-id="p6" data-nm="Hornické tajemství">✓ Splněno – získat odznak</button>
 </div>
@@ -424,6 +432,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
     <li>Kdyby děti byly unavené: k Betlému se dá dojet autem až na parkoviště, odkud je to pár set metrů.</li>
   </ul>
   <div class="foot">Ceny a časy z oficiálních webů pevnostjosefov.cz a hospital-kuks.cz, ověřeno 29. 10. 2026.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="v1-0"><span>Bundy do podzemí (je tam chladno a vlhko)</span></label><label class="chk"><input type="checkbox" data-k="v1-1"><span>Baterka nebo čelovka do podzemí</span></label><label class="chk"><input type="checkbox" data-k="v1-2"><span>Pevné boty (podzemí i les k Betlému)</span></label><label class="chk"><input type="checkbox" data-k="v1-3"><span>Svačina a pití na cestu k Betlému</span></label><label class="chk"><input type="checkbox" data-k="v1-4"><span>Peníze nebo karta na vstupy (930 Kč)</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v1-0"><span>V podzemí Josefova: kolik schodů sejdete dolů?</span></label><label class="chk"><input type="checkbox" data-k="v1-1"><span>V Kuksu najděte sochu, která se tváří nejhrozivěji.</span></label><label class="chk"><input type="checkbox" data-k="v1-2"><span>U Betléma najděte jeskyni poustevníka Garina.</span></label></div>
   <button class="donebtn" type="button" data-id="v1" data-nm="Kamenní obři z lesa">✓ Splněno – získat odznak</button>
 </div>
@@ -471,6 +480,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
     <li>Do bunkrů nelezte, bývají v nich díry a ostré železo. Dívat se zvenku stačí. U lomu držte děti u sebe.</li>
   </ul>
   <div class="foot">Ceny a časy z oficiálních webů stachelberg.cz a treetop-walks.com/krkonose, ověřeno 29. 10. 2026. Stezka 9.–11. 11. zavřená.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="v2-0"><span>Bundy do podzemí tvrze (je tam zima)</span></label><label class="chk"><input type="checkbox" data-k="v2-1"><span>Pevné boty (cesta k bunkrům)</span></label><label class="chk"><input type="checkbox" data-k="v2-2"><span>Peníze nebo karta na vstupy (1 850 Kč)</span></label><label class="chk"><input type="checkbox" data-k="v2-3"><span>Drobné na tobogán (50 Kč za osobu)</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v2-0"><span>Na Stezce korunami: dojedete tobogánem dolů?</span></label><label class="chk"><input type="checkbox" data-k="v2-1"><span>U Stachelbergu spočítejte bunkry, které cestou uvidíte.</span></label><label class="chk"><input type="checkbox" data-k="v2-2"><span>Vylezte na rozhlednu Eliška.</span></label></div>
   <button class="donebtn" type="button" data-id="v2" data-nm="Tajná pevnost">✓ Splněno – získat odznak</button>
 </div>
@@ -509,6 +519,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
     <li>Muzeum: tel. <a href="tel:+420737225428">737 225 428</a>. Aktuální otevírací dobu jsem na webu nenašel.</li>
   </ul>
   <div class="foot">Pecka: hradpecka.cz, ověřeno 29. 10. 2026. Muzeum: leták KRNAP 2023.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="v3-0"><span>Bunda do hradních sklepů</span></label><label class="chk"><input type="checkbox" data-k="v3-1"><span>Peníze nebo karta na vstupy (750 Kč)</span></label><label class="chk"><input type="checkbox" data-k="v3-2"><span>Svačina na cestu</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v3-0"><span>Na Pecce: kdo najde nejhlubší sklep?</span></label><label class="chk"><input type="checkbox" data-k="v3-1"><span>V muzeu najděte zvíře, které žije v Krkonoších.</span></label><label class="chk"><input type="checkbox" data-k="v3-2"><span>Spočítejte věže a brány hradu Pecka.</span></label></div>
   <button class="donebtn" type="button" data-id="v3" data-nm="Hradní sklepení">✓ Splněno – získat odznak</button>
 </div>
@@ -538,6 +549,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="btns"><a class="btn g" href="https://www.adrspasskeskaly.cz/" target="_blank" rel="noopener">▶ Vstupenky online</a><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=16.1085190,50.6189263&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <ul><li>Tel. <a href="tel:+420491586012">491 586 012</a>. Pevné boty, na schodech bývá mokro.</li></ul>
   <div class="foot">Ceny a časy: adrspasskeskaly.cz a adrspach.cz, ověřeno 29. 10. 2026.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="v4-0"><span>Vstupenky a parkování koupené online předem (v mobilu)</span></label><label class="chk"><input type="checkbox" data-k="v4-1"><span>Hotovost na lodičku, jinak se platit nedá (300 Kč, do 31. 10.)</span></label><label class="chk"><input type="checkbox" data-k="v4-2"><span>Pevné boty s dobrou podrážkou (skoro 2 000 schodů, mokro)</span></label><label class="chk"><input type="checkbox" data-k="v4-3"><span>Pití a svačina</span></label><label class="chk"><input type="checkbox" data-k="v4-4"><span>Náhradní ponožky</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v4-0"><span>Najděte Gotickou branku.</span></label><label class="chk"><input type="checkbox" data-k="v4-1"><span>Počítejte schody, je jich skoro 2 000!</span></label><label class="chk"><input type="checkbox" data-k="v4-2"><span>Najděte skálu, která vypadá jako zvíře nebo obličej.</span></label></div>
   <button class="donebtn" type="button" data-id="v4" data-nm="Skalní bludiště">✓ Splněno – získat odznak</button>
 </div>
@@ -565,6 +577,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.79722,50.43333&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <ul><li>Tel. <a href="tel:+420770123218">770 123 218</a>.</li></ul>
   <div class="foot">safaripark.cz, ověřeno 29. 10. 2026. Hlavní sezóna je dražší (rodinné 590 Kč + 235 Kč za dítě).</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="v5-0"><span>Peníze nebo karta (rodinné vstupné jen na pokladně)</span></label><label class="chk"><input type="checkbox" data-k="v5-1"><span>Pláštěnky (velká část parku je venku)</span></label><label class="chk"><input type="checkbox" data-k="v5-2"><span>Svačina a pití</span></label><label class="chk"><input type="checkbox" data-k="v5-3"><span>Peníze na Safaribus nebo Truck</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v5-0"><span>Najděte žirafu a nosorožce.</span></label><label class="chk"><input type="checkbox" data-k="v5-1"><span>Kdo první uvidí lva?</span></label><label class="chk"><input type="checkbox" data-k="v5-2"><span>Které zvíře bylo nejvtipnější? Hlasujte v autě.</span></label></div>
   <button class="donebtn" type="button" data-id="v5" data-nm="Africká výprava">✓ Splněno – získat odznak</button>
 </div>
@@ -594,6 +607,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=16.0525814,50.4150145&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <ul><li>Ratibořice tel. <a href="tel:+420491452123">491 452 123</a>, Náchod <a href="tel:+420773771818">773 771 818</a>.</li></ul>
   <div class="foot">zamek-ratiborice.cz, zamek-nachod.cz, ověřeno 29. 10. 2026.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="v6-0"><span>Peníze nebo karta na vstupy</span></label><label class="chk"><input type="checkbox" data-k="v6-1"><span>Pohodlné boty na procházku údolím</span></label><label class="chk"><input type="checkbox" data-k="v6-2"><span>Svačina</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v6-0"><span>Najděte Viktorčin splav.</span></label><label class="chk"><input type="checkbox" data-k="v6-1"><span>Zjistěte, k čemu sloužilo bělidlo.</span></label><label class="chk"><input type="checkbox" data-k="v6-2"><span>Na Rudrově mlýně: jak se mele mouka?</span></label></div>
   <button class="donebtn" type="button" data-id="v6" data-nm="Kouzelné údolí">✓ Splněno – získat odznak</button>
 </div>
@@ -618,6 +632,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   </ul>
   <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.60703,50.73371&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
   <div class="foot">mestospindleruvmlyn.cz, krkonose.eu, skiareal.cz, ověřeno 29. 10. 2026.</div>
+  <div class="pk"><h3>🎒 S sebou na tento výlet</h3><label class="chk"><input type="checkbox" data-k="v7-0"><span>Peníze nebo karta na lanovku Medvědín</span></label><label class="chk"><input type="checkbox" data-k="v7-1"><span>Pevné boty (8,6 km z kopce)</span></label><label class="chk"><input type="checkbox" data-k="v7-2"><span>Čepice a vrstva (nahoře 1 235 m)</span></label><label class="chk"><input type="checkbox" data-k="v7-3"><span>Pití a svačina</span></label><label class="chk"><input type="checkbox" data-k="v7-4"><span>Náplasti</span></label></div>
   <div class="tasks"><h3>🕵️ Úkoly pro děti</h3><label class="chk"><input type="checkbox" data-k="v7-0"><span>Najděte všech 7 dřevěných medvědů.</span></label><label class="chk"><input type="checkbox" data-k="v7-1"><span>Vyplňte úkoly v mapě od lanovky.</span></label><label class="chk"><input type="checkbox" data-k="v7-2"><span>Kdo dojde dolů první, vybírá zmrzlinu.</span></label></div>
   <button class="donebtn" type="button" data-id="v7" data-nm="Lov na 7 medvědů">✓ Splněno – získat odznak</button>
 </div>
@@ -713,7 +728,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
 <button class="updbtn" type="button" id="upd">🔄 Aktualizovat appku</button>
 <div class="cap" id="updmsg" style="text-align:center">Stáhne nejnovější verzi. Potřebuje internet, odznaky zůstanou.</div>
 <div class="share"><img src="img/qr.png" alt="QR kód s odkazem na appku" width="120" height="120"><div><b>📲 Pošli appku dál</b><span>Ať si druhý naskenuje QR kód fotoaparátem v mobilu, otevře se mu appka. Pak stačí Přidat na plochu.</span></div></div>
-<footer>Mapy © přispěvatelé OpenStreetMap · verze 11 · 29. 10. 2026</footer>
+<footer>Mapy © přispěvatelé OpenStreetMap · verze 12 · 29. 10. 2026</footer>
 </div>
 
 <nav class="bnav" role="tablist"><div class="in">
@@ -823,6 +838,12 @@ var TK=lsGet('cd2026-tasks',{});
 document.querySelectorAll('.tasks input').forEach(function(i){
   i.checked=!!TK[i.dataset.k];
   i.addEventListener('change',function(){if(i.checked)TK[i.dataset.k]=1;else delete TK[i.dataset.k];lsSet('cd2026-tasks',TK);});
+});
+
+var CP=lsGet('cd2026-cardpack',{});
+document.querySelectorAll('.pk input').forEach(function(i){
+  i.checked=!!CP[i.dataset.k];
+  i.addEventListener('change',function(){if(i.checked)CP[i.dataset.k]=1;else delete CP[i.dataset.k];lsSet('cd2026-cardpack',CP);});
 });
 /* s sebou */
 var PACK=["Pití (aspoň 0,5 l na osobu)","Svačina a něco sladkého","Pláštěnky nebo bundy do deště","Čepice a rukavice (nahoře fouká)","Čelovka nebo baterka (podzemí, šero)","Nabitý mobil + powerbanka","Náplasti a kapesníky","Hotovost (lodička, stánky, parkování)","Kartičky pojišťovny","Offline mapa Krkonoš v Mapy.com"];
