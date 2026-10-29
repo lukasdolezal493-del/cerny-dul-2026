@@ -1,4 +1,4 @@
-const C="cerny-dul-2026-v1";
+const C="cerny-dul-2026-v2";
 const A=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png",
 "./img/p1.jpg","./img/p2.jpg","./img/p3.jpg","./img/v1-auto.jpg","./img/v1-pesky.jpg","./img/v2-auto.jpg","./img/v2-pesky.jpg","./img/v3-auto.jpg"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(A)).then(()=>self.skipWaiting()));});

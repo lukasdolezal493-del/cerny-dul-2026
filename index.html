@@ -61,15 +61,65 @@ ul{margin:4px 0;padding-left:20px} li{margin:4px 0}
 .info{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;font-size:15px;margin-bottom:14px}
 .info .h{display:block;font-weight:750;margin-bottom:4px}
 footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
+
+/* --- vzhled v2 --- */
+body{background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23c9bfa9' stroke-width='1' opacity='.55'%3E%3Cpath d='M-20 60 C40 20 90 90 150 50 S230 30 260 60'/%3E%3Cpath d='M-20 80 C40 40 90 110 150 70 S230 50 260 80'/%3E%3Cpath d='M-20 100 C40 60 90 130 150 90 S230 70 260 100'/%3E%3Cpath d='M-20 170 C30 140 80 200 140 165 S220 150 260 175'/%3E%3Cpath d='M-20 190 C30 160 80 220 140 185 S220 170 260 195'/%3E%3C/g%3E%3C/svg%3E");background-size:240px 240px}
+header.hero{position:relative;background:#2b5a8a;color:#fff;padding:0;overflow:hidden}
+header.hero svg.pano{display:block;width:100%;height:190px}
+header.hero .in{position:absolute;left:0;right:0;top:0;padding:18px 16px 0;padding-top:calc(18px + env(safe-area-inset-top));max-width:680px;margin:0 auto}
+header.hero h1{font-size:28px;text-shadow:0 1px 3px rgba(0,0,0,.35)}
+header.hero p{text-shadow:0 1px 2px rgba(0,0,0,.4)}
+details.card>summary{position:relative;padding-right:76px}
+.pic{position:absolute;right:14px;top:14px;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:#f6f3ec;border:2px solid var(--c,var(--forest))}
+details.card.done>summary .pic::after{content:"✓";position:absolute;right:-4px;bottom:-4px;width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center;border:2px solid #fff}
+.badges{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);padding:14px 14px 12px;margin:0 0 14px}
+.badges .bh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.badges .bh b{font-size:16px}
+.badges .bh span{font-size:13.5px;color:var(--soft);font-weight:650}
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.badge{text-align:center;font-size:11.5px;line-height:1.25;color:var(--soft);padding:8px 2px 6px;border-radius:12px;background:#f4f1ea}
+.badge .e{display:block;font-size:30px;filter:grayscale(1);opacity:.35;margin-bottom:3px;transition:all .3s}
+.badge.on{background:#fff4cf;color:var(--ink);font-weight:700;box-shadow:inset 0 0 0 2px #e3b505}
+.badge.on .e{filter:none;opacity:1;transform:scale(1.08)}
+.champ{display:none;margin-top:10px;text-align:center;font-weight:800;color:#7a4d00;background:#fff4cf;border-radius:10px;padding:8px}
+.champ.on{display:block}
+.donebtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;margin:14px 0 2px;border-radius:12px;border:2px dashed var(--g);background:#f0f8f2;color:var(--g);font-size:16px;font-weight:750;cursor:pointer;padding:6px 10px}
+details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 </style>
 </head>
 <body>
-<header><div class="in">
+<header class="hero">
+<svg class="pano" viewBox="0 0 400 190" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+ <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#244c78"/><stop offset=".75" stop-color="#5f8fb8"/><stop offset="1" stop-color="#a9c6dc"/></linearGradient></defs>
+ <rect width="400" height="190" fill="url(#sk)"/>
+ <circle cx="318" cy="70" r="20" fill="#f6c453" opacity=".95"/>
+ <path d="M0 132 L40 118 L78 124 L120 104 L150 110 L196 80 L210 74 L222 80 L262 102 L300 96 L340 112 L400 100 L400 190 L0 190Z" fill="#9fb8cf"/>
+ <rect x="206" y="68" width="8" height="7" fill="#9fb8cf"/>
+ <path d="M0 150 L50 132 L96 142 L140 124 L190 138 L240 120 L290 136 L338 124 L400 138 L400 190 L0 190Z" fill="#4f7f6a"/>
+ <path d="M0 166 L60 150 L118 160 L170 146 L226 158 L280 148 L340 160 L400 150 L400 190 L0 190Z" fill="#2f6b45"/>
+ <g fill="#1f4f31">
+  <path d="M30 172 l7 -18 l7 18z"/><path d="M44 174 l6 -14 l6 14z"/><path d="M330 172 l7 -19 l7 19z"/><path d="M346 175 l6 -14 l6 14z"/><path d="M362 172 l7 -17 l7 17z"/><path d="M250 176 l5 -12 l5 12z"/>
+ </g>
+ <path d="M0 190 L0 178 L400 172 L400 190Z" fill="#f4f1ea"/>
+</svg>
+<div class="in">
   <h1>Černý Důl 2026</h1>
   <p>Výlety a procházky pro rodinu · chata Alfa, čp. 274</p>
 </div></header>
 
 <div class="wrap">
+<div class="badges" id="badges">
+  <div class="bh"><b>🏅 Odznaky výpravy</b><span id="bcount">0 / 6</span></div>
+  <div class="bgrid">
+    <div class="badge" data-b="p1"><span class="e">🪨</span>Strážce lomu</div>
+    <div class="badge" data-b="p2"><span class="e">⛏️</span>Mladý horník</div>
+    <div class="badge" data-b="p3"><span class="e">🏔️</span>Dobyvatel Tetřevích bud</div>
+    <div class="badge" data-b="v1"><span class="e">🗿</span>Lovec soch</div>
+    <div class="badge" data-b="v2"><span class="e">🪖</span>Bunkrový průzkumník</div>
+    <div class="badge" data-b="v3"><span class="e">🏰</span>Rytíř z Pecky</div>
+  </div>
+  <div class="champ" id="champ">🎉 Všech 6 odznaků! Jste Krkonošští mistři! 🎉</div>
+</div>
 <div class="tabs" role="tablist">
   <button role="tab" aria-selected="true" data-p="pp">🥾 Od chaty</button>
   <button role="tab" aria-selected="false" data-p="vv">🚗 Výlety autem</button>
@@ -79,8 +129,8 @@ footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
 <section class="panel" id="pp">
 <p class="intro">Okruhy po turistických značkách přímo od chaty a zpět. Klepni na okruh a rozbalí se mapa a popis cesty.</p>
 
-<details class="card" style="--c:var(--g)">
-<summary><div class="kick">Malá procházka</div><div class="ttl">Okruh kolem lomu</div>
+<details class="card" data-id="p1" style="--c:var(--g)">
+<summary><span class="pic" aria-hidden="true">🪨</span><div class="kick">Malá procházka</div><div class="ttl">Okruh kolem lomu</div>
 <div class="chips"><span class="chip">3,7 km</span><span class="chip">+140 m</span><span class="chip">1,5–2 h</span><span class="chip"><span class="mk g"></span>zelený roh</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
   <div class="when"><b>Značka:</b> <span class="mk g"></span><b>zelený roh</b>, místní okruh (naučná stezka Okolo lomu). Úsek kolem lanovek vede zároveň se <span class="mk y"></span>žlutou.</div>
@@ -103,11 +153,12 @@ footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
   </ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.69978,50.63459;15.69625,50.63454;15.69802,50.64032&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM. Délku 3,7 km potvrzuje i leták KRNAP.</div>
+  <button class="donebtn" type="button" data-id="p1" data-nm="Strážce lomu">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
-<details class="card" style="--c:var(--r)">
-<summary><div class="kick">Malá až střední</div><div class="ttl">Stezka za sv. Barborou</div>
+<details class="card" data-id="p2" style="--c:var(--r)">
+<summary><span class="pic" aria-hidden="true">⛏️</span><div class="kick">Malá až střední</div><div class="ttl">Stezka za sv. Barborou</div>
 <div class="chips"><span class="chip">5,2 km</span><span class="chip">+190 m</span><span class="chip">2–2,5 h</span><span class="chip"><span class="mk r"></span>červený roh</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
   <div class="when"><b>Značka:</b> <span class="mk r"></span><b>červený roh</b>, místní naučná stezka o hornické historii Černého Dolu. Začátek a konec jdou zároveň se <span class="mk b"></span>modrou.</div>
@@ -126,11 +177,12 @@ footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
   <ul><li>Na trase žádná bouda není. Na startu a v cíli jsou restaurace <b>U Pajeru</b> a <b>Pošta</b> a hospoda <b>U Šťastných</b>.</li></ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.71558,50.63824;15.733231,50.632265;15.71289,50.6277;15.70987,50.6348&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <button class="donebtn" type="button" data-id="p2" data-nm="Mladý horník">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
-<details class="card" style="--c:var(--b)">
-<summary><div class="kick">Střední · na celý den</div><div class="ttl">Okruh přes Tetřeví boudy</div>
+<details class="card" data-id="p3" style="--c:var(--b)">
+<summary><span class="pic" aria-hidden="true">🏔️</span><div class="kick">Střední · na celý den</div><div class="ttl">Okruh přes Tetřeví boudy</div>
 <div class="chips"><span class="chip">11,4 km</span><span class="chip">+530 m</span><span class="chip">4,5–5 h</span><span class="chip"><span class="mk y"></span><span class="mk g"></span><span class="mk b"></span></span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
   <div class="when"><b>Značky:</b> nahoru po <span class="mk y"></span><b>žluté</b>, nahoře po <span class="mk g"></span><b>zelené</b>, dolů po <span class="mk b"></span><b>modré</b>. Vyrazte <b>nejpozději v 10:00</b>, slunce zapadá kolem 16:40.</div>
@@ -158,6 +210,7 @@ footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
     <li>Nahoře je o 450 m výš, takže zhruba o 3 °C chladněji a víc fouká. Vezměte čepice a vrstvy.</li>
   </ul>
   <div class="foot">Délka, značení a rozcestníky z OpenStreetMapu (podklad i pro Mapy.com), převýšení z EU-DEM. V terénu se řiď značkami, mapa je kontrola.</div>
+  <button class="donebtn" type="button" data-id="p3" data-nm="Dobyvatel Tetřevích bud">✓ Splněno – získat odznak</button>
 </div>
 </details>
 </section>
@@ -166,8 +219,8 @@ footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
 <section class="panel" id="vv" hidden>
 <p class="intro">Tři celodenní výlety autem. Nejlepší den je <b>sobota 31. 10.</b>, kdy má ještě všechno otevřeno.</p>
 
-<details class="card" style="--c:#9a3412">
-<summary><div class="kick">Výlet 1 · na jih</div><div class="ttl">Podzemí Josefov + Kuks a Braunův Betlém</div>
+<details class="card" data-id="v1" style="--c:#9a3412">
+<summary><span class="pic" aria-hidden="true">🗿</span><div class="kick">Výlet 1 · na jih</div><div class="ttl">Podzemí Josefov + Kuks a Braunův Betlém</div>
 <div class="chips"><span class="chip">🚗 103 km</span><span class="chip">🥾 6,6 km</span><span class="chip">930 Kč</span></div><div class="more">Zobrazit program a mapy ›</div></summary>
 <div class="body">
   <div class="when"><b>Kdy:</b> jen <b>sobota 31. 10.</b> Podzemí Josefov ten den končí sezónu, v týdnu je jen pro objednané skupiny. Kuks má otevřeno i čt/pá (9–17) a v listopadu o víkendech (9–16).</div>
@@ -211,11 +264,12 @@ footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
     <li>Kdyby děti byly unavené: k Betlému se dá dojet autem až na parkoviště, odkud je to pár set metrů.</li>
   </ul>
   <div class="foot">Ceny a časy z oficiálních webů pevnostjosefov.cz a hospital-kuks.cz, ověřeno 29. 10. 2026.</div>
+  <button class="donebtn" type="button" data-id="v1" data-nm="Lovec soch">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
-<details class="card" style="--c:#1e3a5f">
-<summary><div class="kick">Výlet 2 · na východ</div><div class="ttl">Stezka korunami stromů + tvrz Stachelberg</div>
+<details class="card" data-id="v2" style="--c:#1e3a5f">
+<summary><span class="pic" aria-hidden="true">🪖</span><div class="kick">Výlet 2 · na východ</div><div class="ttl">Stezka korunami stromů + tvrz Stachelberg</div>
 <div class="chips"><span class="chip">🚗 42 km</span><span class="chip">🥾 2,6 km</span><span class="chip">1 850 Kč</span><span class="chip">🔭 2 rozhledny</span></div><div class="more">Zobrazit program a mapy ›</div></summary>
 <div class="body">
   <div class="when"><b>Kdy:</b> nejlépe <b>sobota 31. 10.</b> (Stachelberg 10–17). V listopadu jen soboty, jedna prohlídka ve 13:00. Stezka korunami je otevřená <b>denně</b>, jde i samostatně ve čtvrtek nebo pátek.</div>
@@ -256,11 +310,12 @@ footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
     <li>Do bunkrů nelezte, bývají v nich díry a ostré železo. Dívat se zvenku stačí. U lomu držte děti u sebe.</li>
   </ul>
   <div class="foot">Ceny a časy z oficiálních webů stachelberg.cz a treetop-walks.com/krkonose, ověřeno 29. 10. 2026. Stezka 9.–11. 11. zavřená.</div>
+  <button class="donebtn" type="button" data-id="v2" data-nm="Bunkrový průzkumník">✓ Splněno – získat odznak</button>
 </div>
 </details>
 
-<details class="card" style="--c:#365314">
-<summary><div class="kick">Výlet 3 · na západ</div><div class="ttl">Muzeum Krkonoš ve Vrchlabí + hrad Pecka</div>
+<details class="card" data-id="v3" style="--c:#365314">
+<summary><span class="pic" aria-hidden="true">🏰</span><div class="kick">Výlet 3 · na západ</div><div class="ttl">Muzeum Krkonoš ve Vrchlabí + hrad Pecka</div>
 <div class="chips"><span class="chip">🚗 67 km</span><span class="chip">🥾 ~1 km</span><span class="chip">750 Kč</span></div><div class="more">Zobrazit program a mapu ›</div></summary>
 <div class="body">
   <div class="when"><b>Kdy:</b> celý výlet jen <b>sobota 31. 10.</b> (Pecka 9–16, v říjnu jen víkendy). <b>Muzeum samotné jde i čt/pá</b> (út–ne 9–17), hodí se do deště.</div>
@@ -292,6 +347,7 @@ footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
     <li>Muzeum: tel. <a href="tel:+420737225428">737 225 428</a>. Aktuální otevírací dobu jsem na webu nenašel.</li>
   </ul>
   <div class="foot">Pecka: hradpecka.cz, ověřeno 29. 10. 2026. Muzeum: leták KRNAP 2023.</div>
+  <button class="donebtn" type="button" data-id="v3" data-nm="Rytíř z Pecky">✓ Splněno – získat odznak</button>
 </div>
 </details>
 </section>
@@ -310,6 +366,29 @@ document.querySelectorAll('.tabs button').forEach(function(b){
     window.scrollTo({top:0});
   });
 });
+
+var KEY="cd2026-done";
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+function save(d){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+var done=load();
+function render(){
+  var n=0;
+  document.querySelectorAll('.badge').forEach(function(b){var on=!!done[b.dataset.b];b.classList.toggle('on',on);if(on)n++;});
+  document.querySelectorAll('details.card').forEach(function(c){c.classList.toggle('done',!!done[c.dataset.id]);});
+  document.querySelectorAll('.donebtn').forEach(function(b){
+    b.textContent=done[b.dataset.id]?'🏅 Odznak získán: '+b.dataset.nm+' (klepni pro zrušení)':'✓ Splněno – získat odznak '+b.dataset.nm;
+  });
+  document.getElementById('bcount').textContent=n+' / 6';
+  document.getElementById('champ').classList.toggle('on',n===6);
+}
+document.querySelectorAll('.donebtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    if(done[b.dataset.id]){delete done[b.dataset.id];}else{done[b.dataset.id]=1;}
+    save(done);render();
+    if(done[b.dataset.id]){document.getElementById('badges').scrollIntoView({behavior:'smooth'});}
+  });
+});
+render();
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js');});}
 </script>
 </body>
