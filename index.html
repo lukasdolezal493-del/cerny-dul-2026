@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Černý Důl 2026</title>
+<meta name="theme-color" content="#1e3a5f">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Černý Důl">
+<style>
+:root{
+  --bg:#f4f1ea; --paper:#fff; --ink:#1f2328; --soft:#57606a; --line:#e4ded2;
+  --forest:#1e3a5f; --warnbg:#fff8c5; --warnline:#d4a72c; --warn:#9a3412;
+  --y:#e3b505; --r:#d1242f; --g:#1a7f37; --b:#0969da;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 18px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 48px}
+header{background:var(--forest);color:#fff;padding:22px 16px 18px;padding-top:calc(22px + env(safe-area-inset-top))}
+header .in{max-width:680px;margin:0 auto}
+header h1{margin:0;font-size:26px;line-height:1.15}
+header p{margin:6px 0 0;opacity:.85;font-size:14.5px}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:8px;padding:12px 0 10px}
+.tabs button{flex:1;border:1.5px solid var(--forest);background:var(--paper);color:var(--forest);border-radius:999px;padding:11px 8px;font-size:15px;font-weight:650;min-height:46px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--forest);color:#fff}
+.panel[hidden]{display:none}
+.intro{font-size:14.5px;color:var(--soft);margin:2px 2px 12px}
+details.card{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);margin:0 0 14px;overflow:hidden}
+details.card>summary{list-style:none;cursor:pointer;padding:14px 16px 14px 18px;border-left:6px solid var(--c,var(--forest))}
+details.card>summary::-webkit-details-marker{display:none}
+.kick{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--soft);font-weight:650}
+.ttl{font-size:19px;font-weight:750;margin:2px 0 8px;line-height:1.25}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:#f1efe9;border-radius:999px;padding:3px 10px;font-size:13.5px;font-weight:600}
+.more{margin-top:8px;font-size:13.5px;color:var(--b);font-weight:650}
+details[open] .more{display:none}
+.body{padding:0 16px 18px}
+.when{background:var(--warnbg);border-left:4px solid var(--warnline);border-radius:6px;padding:8px 11px;font-size:14.5px;margin:4px 0 12px}
+img.map{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block}
+.cap{font-size:12.5px;color:var(--soft);margin:4px 0 10px}
+h3{font-size:16.5px;margin:16px 0 6px;padding-bottom:3px;border-bottom:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+td{padding:7px 4px;vertical-align:top;border-bottom:1px solid #eee8dc}
+td.t{width:58px;font-weight:750;white-space:nowrap}
+td.r{text-align:right;white-space:nowrap}
+tr.sum td{font-weight:750;border-top:2px solid var(--ink);border-bottom:none}
+ul{margin:4px 0;padding-left:20px} li{margin:4px 0}
+.mk{display:inline-block;width:20px;height:12px;vertical-align:-1px;margin-right:4px;border:1px solid #999;background:linear-gradient(#fff 0 30%,var(--m) 30% 70%,#fff 70%)}
+.mk.y{--m:var(--y)} .mk.r{--m:var(--r)} .mk.g{--m:var(--g)} .mk.b{--m:var(--b)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border-radius:10px;background:var(--b);color:#fff;font-weight:700;text-decoration:none;font-size:15px}
+.btn.g{background:var(--g)}
+.warn{color:var(--warn);font-weight:650}
+.view{background:#ddf4ff;border-left:4px solid var(--b);border-radius:6px;padding:8px 11px;font-size:14.5px;margin:10px 0}
+.foot{font-size:12px;color:var(--soft);margin-top:10px}
+.info{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;font-size:15px;margin-bottom:14px}
+.info .h{display:block;font-weight:750;margin-bottom:4px}
+footer{font-size:12px;color:var(--soft);text-align:center;margin-top:20px}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <h1>Černý Důl 2026</h1>
+  <p>Výlety a procházky pro rodinu · chata Alfa, čp. 274</p>
+</div></header>
+
+<div class="wrap">
+<div class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-p="pp">🥾 Od chaty</button>
+  <button role="tab" aria-selected="false" data-p="vv">🚗 Výlety autem</button>
+</div>
+
+<!-- ================= PROCHÁZKY ================= -->
+<section class="panel" id="pp">
+<p class="intro">Okruhy po turistických značkách přímo od chaty a zpět. Klepni na okruh a rozbalí se mapa a popis cesty.</p>
+
+<details class="card" style="--c:var(--g)">
+<summary><div class="kick">Malá procházka</div><div class="ttl">Okruh kolem lomu</div>
+<div class="chips"><span class="chip">3,7 km</span><span class="chip">+140 m</span><span class="chip">1,5–2 h</span><span class="chip"><span class="mk g"></span>zelený roh</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+  <div class="when"><b>Značka:</b> <span class="mk g"></span><b>zelený roh</b>, místní okruh (naučná stezka Okolo lomu). Úsek kolem lanovek vede zároveň se <span class="mk y"></span>žlutou.</div>
+  <img class="map" src="img/p1.jpg" alt="Mapa okruhu kolem lomu" width="1000" height="600" loading="lazy">
+  <div class="cap">H = chata · N = náměstí · V = vyhlídka · 1–3 = rozcestníky</div>
+  <h3>Kudy</h3>
+  <table>
+    <tr><td class="t">H → N</td><td>Od chaty 140 m dolů na náměstí k rozcestníku <b>Černý Důl (nám.)</b>.</td></tr>
+    <tr><td class="t">N</td><td>Chytněte <span class="mk g"></span><b>zelený roh</b>. Ze začátku jde spolu se žlutou, po 100 m se od ní odpojí. Držte se zeleného rohu, vede z obce ven a kolem lomu.</td></tr>
+    <tr><td class="t">V</td><td><b>Vyhlídka</b> (1,4 km). Dobré místo na svačinu.</td></tr>
+    <tr><td class="t">1</td><td>Rozcestník (1,7 km). Dál po zeleném rohu, mírně do kopce.</td></tr>
+    <tr><td class="t">2</td><td>Rozcestník (2,6 km). Tady se k zelenému rohu přidá <span class="mk y"></span><b>žlutá</b> a obě vás vedou z kopce dolů k lanovkám.</td></tr>
+    <tr><td class="t">3</td><td>Dolní stanice lanovek (3,3 km), restaurace <b>Horská služba</b>. Odtud je to pár kroků k chatě.</td></tr>
+  </table>
+  <h3>Občerstvení</h3>
+  <ul>
+    <li>Na samotné trase žádná bouda není. Vezměte si svačinu a pití.</li>
+    <li>Cestou zpátky jsou u lanovek a na náměstí: <b>Horská služba</b>, hospoda <b>U Šťastných</b> a restaurace <b>Pošta</b>.</li>
+    <li>Okraj lomu je strmý, držte děti na cestě.</li>
+  </ul>
+  <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.69978,50.63459;15.69625,50.63454;15.69802,50.64032&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
+  <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM. Délku 3,7 km potvrzuje i leták KRNAP.</div>
+</div>
+</details>
+
+<details class="card" style="--c:var(--r)">
+<summary><div class="kick">Malá až střední</div><div class="ttl">Stezka za sv. Barborou</div>
+<div class="chips"><span class="chip">5,2 km</span><span class="chip">+190 m</span><span class="chip">2–2,5 h</span><span class="chip"><span class="mk r"></span>červený roh</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+  <div class="when"><b>Značka:</b> <span class="mk r"></span><b>červený roh</b>, místní naučná stezka o hornické historii Černého Dolu. Začátek a konec jdou zároveň se <span class="mk b"></span>modrou.</div>
+  <img class="map" src="img/p2.jpg" alt="Mapa stezky za sv. Barborou" width="1000" height="600" loading="lazy">
+  <div class="cap">H = chata · N = náměstí · V = vyhlídka · 1–2 = otočné body / rozcestníky</div>
+  <h3>Kudy</h3>
+  <table>
+    <tr><td class="t">H → N</td><td>Od chaty 140 m na náměstí k rozcestníku <b>Černý Důl (nám.)</b>.</td></tr>
+    <tr><td class="t">N</td><td>Chytněte <span class="mk r"></span><b>červený roh</b>. Prvních 800 m jde spolu se žlutou (prvních 500 m i s modrou) kolem restaurace <b>U Pajeru</b>, pak se oddělí a stoupá nad obec.</td></tr>
+    <tr><td class="t">V</td><td><b>Vyhlídka</b> (0,8 km).</td></tr>
+    <tr><td class="t">1</td><td>Po červeném rohu stráněmi na východ až k silnici na Janské Lázně (asi 2,4 km). Tady se trasa stáčí zpátky na západ.</td></tr>
+    <tr><td class="t">2</td><td>Rozcestník pod obcí (4,1 km). Dál po červeném rohu spolu s <span class="mk b"></span><b>modrou</b> podél silnice zpátky na náměstí.</td></tr>
+    <tr><td class="t">N → H</td><td>Z náměstí 140 m k chatě (celkem 5,2 km).</td></tr>
+  </table>
+  <h3>Občerstvení</h3>
+  <ul><li>Na trase žádná bouda není. Na startu a v cíli jsou restaurace <b>U Pajeru</b> a <b>Pošta</b> a hospoda <b>U Šťastných</b>.</li></ul>
+  <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.71558,50.63824;15.733231,50.632265;15.71289,50.6277;15.70987,50.6348&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
+  <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+</div>
+</details>
+
+<details class="card" style="--c:var(--b)">
+<summary><div class="kick">Střední · na celý den</div><div class="ttl">Okruh přes Tetřeví boudy</div>
+<div class="chips"><span class="chip">11,4 km</span><span class="chip">+530 m</span><span class="chip">4,5–5 h</span><span class="chip"><span class="mk y"></span><span class="mk g"></span><span class="mk b"></span></span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+  <div class="when"><b>Značky:</b> nahoru po <span class="mk y"></span><b>žluté</b>, nahoře po <span class="mk g"></span><b>zelené</b>, dolů po <span class="mk b"></span><b>modré</b>. Vyrazte <b>nejpozději v 10:00</b>, slunce zapadá kolem 16:40.</div>
+  <img class="map" src="img/p3.jpg" alt="Mapa okruhu přes Tetřeví boudy" width="1000" height="820" loading="lazy">
+  <div class="cap">H = chata · N = náměstí · V = vyhlídka Bönischovy boudy · 1 = Rejdiště · T = Tetřeví boudy (oběd) · 2 = Hrnčířské boudy · 3, 4 = Údolí Čisté</div>
+  <h3>Kudy</h3>
+  <table>
+    <tr><td class="t">H</td><td>Žlutá vede asi 60 m od chaty. Jděte po <span class="mk y"></span><b>žluté</b> k lanovkám a dál do kopce podél sjezdovky.</td></tr>
+    <tr><td class="t">V</td><td><b>Vyhlídka Bönischovy boudy</b> (asi 1,5 km) s výhledem do údolí.</td></tr>
+    <tr><td class="t">1</td><td>Rozcestník <b>Rejdiště</b>, 990 m n. m. (3,7 km). Dál po žluté.</td></tr>
+    <tr><td class="t">T</td><td><b>Tetřeví Boudy</b>, 1 032 m n. m. (4,7 km). <b>Hotel s restaurací, oběd.</b> Pak přejděte na <span class="mk g"></span><b>zelenou</b> směr Hrnčířské boudy.</td></tr>
+    <tr><td class="t">2</td><td><b>Hrnčířské boudy</b>, 1 070 m n. m. (6,4 km), nejvyšší bod. Přejděte na <span class="mk b"></span><b>modrou</b> směr Černý Důl.</td></tr>
+    <tr><td class="t">3</td><td><b>Údolí Čisté (rozc.)</b>, 910 m n. m. (7,7 km). Stále po modré dolů údolím.</td></tr>
+    <tr><td class="t">4</td><td><b>Údolí Čisté</b> (8,2 km). Po modré údolím až do Černého Dolu na náměstí (11,3 km), pak 140 m k chatě.</td></tr>
+  </table>
+  <h3>Občerstvení</h3>
+  <ul>
+    <li><b>Tetřeví Boudy</b> (4,7 km): jediné jisté místo na jídlo nahoře. <span class="warn">Otevírací dobu jsem neověřil, před odchodem zavolej.</span></li>
+    <li>U Hrnčířských bud jsou další horské boudy (Lidická bouda, Pražská bouda), ale leží asi 1 km mimo trasu. Otevírací doba neověřena.</li>
+    <li>Dole v cíli: <b>U Pajeru</b>, <b>Pošta</b>, <b>U Šťastných</b>.</li>
+  </ul>
+  <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70011,50.64465;15.69314,50.66065;15.69631,50.66903;15.71847,50.6696;15.71214,50.66104&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
+  <ul>
+    <li><b>Zkratka, kdyby děti nemohly:</b> z Tetřevích bud se vraťte stejnou cestou po žluté. Celkem pak ujdete asi 9,4 km místo 11,4 km.</li>
+    <li>Nahoře je o 450 m výš, takže zhruba o 3 °C chladněji a víc fouká. Vezměte čepice a vrstvy.</li>
+  </ul>
+  <div class="foot">Délka, značení a rozcestníky z OpenStreetMapu (podklad i pro Mapy.com), převýšení z EU-DEM. V terénu se řiď značkami, mapa je kontrola.</div>
+</div>
+</details>
+</section>
+
+<!-- ================= VÝLETY ================= -->
+<section class="panel" id="vv" hidden>
+<p class="intro">Tři celodenní výlety autem. Nejlepší den je <b>sobota 31. 10.</b>, kdy má ještě všechno otevřeno.</p>
+
+<details class="card" style="--c:#9a3412">
+<summary><div class="kick">Výlet 1 · na jih</div><div class="ttl">Podzemí Josefov + Kuks a Braunův Betlém</div>
+<div class="chips"><span class="chip">🚗 103 km</span><span class="chip">🥾 6,6 km</span><span class="chip">930 Kč</span></div><div class="more">Zobrazit program a mapy ›</div></summary>
+<div class="body">
+  <div class="when"><b>Kdy:</b> jen <b>sobota 31. 10.</b> Podzemí Josefov ten den končí sezónu, v týdnu je jen pro objednané skupiny. Kuks má otevřeno i čt/pá (9–17) a v listopadu o víkendech (9–16).</div>
+  <img class="map" src="img/v1-auto.jpg" alt="Mapa cesty autem" width="1000" height="640" loading="lazy">
+  <div class="cap">D = Černý Důl · 1 = Pevnost Josefov (Bastion I) · 2 = Kuks</div>
+  <h3>Program</h3>
+  <table>
+    <tr><td class="t">8:00</td><td>Odjezd z Černého Dolu (49,5 km, cca 56 min)</td></tr>
+    <tr><td class="t">9:00</td><td><b>Josefov – podzemí Bastionu I.</b> Prohlídka s průvodcem chodbami. Otevřeno 9–12 a 13–17, poslední prohlídka v 16:00.</td></tr>
+    <tr><td class="t">10:30</td><td>Přejezd do Kuksu (9 km, cca 14 min). Parkoviště u hospitálu.</td></tr>
+    <tr><td class="t">10:45</td><td><b>Pěšky k Braunovu Betlému</b>: 3,3 km po žluté a červené, tam a zpět 6,6 km, s dětmi asi 2,5 h. Sochy vytesané do skály, vstup zdarma. Svačinu s sebou.</td></tr>
+    <tr><td class="t">13:15</td><td>Oběd v Kuksu</td></tr>
+    <tr><td class="t">14:30</td><td><b>Hospital Kuks</b>, základní okruh (60 min): barokní lékárna, sochy ctností a neřestí. Časy prohlídek ověř na pokladně.</td></tr>
+    <tr><td class="t">15:45</td><td>Domů (44 km, cca 51 min), v Černém Dole <b>cca 16:40</b>. Slunce zapadá v 16:36.</td></tr>
+  </table>
+  <h3>Pěšky: Kuks → Braunův Betlém (3,3 km jedním směrem)</h3>
+  <img class="map" src="img/v1-pesky.jpg" alt="Mapa pěší trasy k Braunovu Betlému" width="1000" height="560" loading="lazy">
+  <div class="cap">H = hospital · 1–4 = rozcestníky · B = Braunův Betlém · barva čáry = barva značky</div>
+  <table>
+    <tr><td class="t">H</td><td>Od hospitálu dojděte dolů k rozcestníku <b>Kuks (odb.)</b>, je to asi 250 m.</td></tr>
+    <tr><td class="t">1</td><td>Tady se napojte na <span class="mk y"></span><b>žlutou</b>. Spolu s ní vede i naučná stezka Půjdem spolu do Betléma (zelený roh).</td></tr>
+    <tr><td class="t">2</td><td>Po žluté kolem zastávky <b>Kuks (vlak)</b> (0,4 km).</td></tr>
+    <tr><td class="t">3</td><td>Dál po žluté přes rozcestník <b>Svatý František</b> (1,2 km).</td></tr>
+    <tr><td class="t">4</td><td>Na rozcestí <b>Pod Betlémem</b> (2,7 km) <b>přejděte na <span class="mk r"></span>červenou</b> a jděte po ní do kopce.</td></tr>
+    <tr><td class="t">B</td><td><b>Betlém (Braunovy sochy)</b> (3,3 km). Zpátky jděte stejnou cestou: po červené k rozcestí Pod Betlémem a pak po žluté do Kuksu.</td></tr>
+  </table>
+  <div class="cap">Rozhlednu ani vyhlídku jsem na této trase nenašel.</div>
+  <div class="btns">
+    <a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.8903094,50.3977711&end=15.85059,50.39831&waypoints=15.87466,50.3967;15.85804,50.39951&routeType=foot_hiking" target="_blank" rel="noopener">▶ Pěší trasa</a>
+    <a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7096227,50.6351150&end=15.8903094,50.3977711&waypoints=15.9237245,50.3383980&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a>
+  </div>
+  <h3>Vstupné (2 dospělí + děti 9 a 7 let)</h3>
+  <table>
+    <tr><td>Josefov podzemí – rodinné (2+2)</td><td class="r">350 Kč</td></tr>
+    <tr><td>Hospital Kuks – 2× dosp. 220 + 2× dítě 70</td><td class="r">580 Kč</td></tr>
+    <tr><td>Braunův Betlém</td><td class="r">zdarma</td></tr>
+    <tr class="sum"><td>Celkem</td><td class="r">930 Kč</td></tr>
+  </table>
+  <ul>
+    <li>Do podzemí vezměte bundy a pevné boty, je tam chladno a vlhko. Baterka se hodí.</li>
+    <li>Kdyby děti byly unavené: k Betlému se dá dojet autem až na parkoviště, odkud je to pár set metrů.</li>
+  </ul>
+  <div class="foot">Ceny a časy z oficiálních webů pevnostjosefov.cz a hospital-kuks.cz, ověřeno 29. 10. 2026.</div>
+</div>
+</details>
+
+<details class="card" style="--c:#1e3a5f">
+<summary><div class="kick">Výlet 2 · na východ</div><div class="ttl">Stezka korunami stromů + tvrz Stachelberg</div>
+<div class="chips"><span class="chip">🚗 42 km</span><span class="chip">🥾 2,6 km</span><span class="chip">1 850 Kč</span><span class="chip">🔭 2 rozhledny</span></div><div class="more">Zobrazit program a mapy ›</div></summary>
+<div class="body">
+  <div class="when"><b>Kdy:</b> nejlépe <b>sobota 31. 10.</b> (Stachelberg 10–17). V listopadu jen soboty, jedna prohlídka ve 13:00. Stezka korunami je otevřená <b>denně</b>, jde i samostatně ve čtvrtek nebo pátek.</div>
+  <img class="map" src="img/v2-auto.jpg" alt="Mapa cesty autem" width="1000" height="640" loading="lazy">
+  <div class="cap">D = Černý Důl · 1 = Stezka korunami stromů (Janské Lázně) · 2 = parkoviště u tvrze Stachelberg</div>
+  <h3>Program</h3>
+  <table>
+    <tr><td class="t">9:20</td><td>Odjezd (4 km, 7 min)</td></tr>
+    <tr><td class="t">9:30</td><td><b>Stezka korunami stromů</b>: lávka v korunách a 45m věž, s tobogánem dolů (od 120 cm, příplatek). Počítej 1,5–2 h.</td></tr>
+    <tr><td class="t">11:30</td><td>Oběd (restaurace u stezky nebo cestou v Trutnově)</td></tr>
+    <tr><td class="t">12:30</td><td>Přejezd na Stachelberg (17 km, cca 21 min)</td></tr>
+    <tr><td class="t">13:00</td><td><b>Dělostřelecká tvrz Stachelberg</b>: muzeum opevnění a podzemí tvrze.</td></tr>
+    <tr><td class="t">14:45</td><td><b>Rozhledna Eliška a bunkry</b>: 2,6 km tam a zpět, cca 45 min. Kolem jsou desítky malých bunkrů (řopíků).</td></tr>
+    <tr><td class="t">15:45</td><td>Domů (21 km, cca 25 min), v Černém Dole <b>cca 16:15</b>, ještě za světla.</td></tr>
+  </table>
+  <h3>Pěšky: k rozhledně Eliška a po bunkrech</h3>
+  <img class="map" src="img/v2-pesky.jpg" alt="Mapa pěší trasy u Stachelbergu" width="1000" height="640" loading="lazy">
+  <div class="cap">P = parkoviště · T = tvrz · E = rozhledna Eliška · B = otočka · šedé tečky = bunkry · čára = značka červená + zelená</div>
+  <table>
+    <tr><td class="t">P</td><td>Od parkoviště a rozcestníku <b>Babí – Stachelberg</b> jděte po <span class="mk r"></span><b>červené</b>. Ve stejném směru vede i <span class="mk g"></span><b>zelená</b> a naučná stezka Opevněné Trutnovsko.</td></tr>
+    <tr><td class="t">E</td><td>Po 0,5 km dojdete k rozcestí <b>Stachelberg – pevnost</b>. Stojí tu <b>rozhledna Eliška</b> (24,5 m, vyhlídkové plošiny ve 9 a 21 m) ve tvaru vojenské pozorovatelny.</td></tr>
+    <tr><td class="t">B</td><td>Pokračujte dál po červené a zelené z kopce k lomu Babí (0,8 km), cestou míjíte bunkry. U lomu se otočte a vraťte se stejnou cestou.</td></tr>
+  </table>
+  <div class="view">🔭 <b>Rozhledny dne:</b> věž Stezky korunami (45 m) a rozhledna Eliška přímo u tvrze.</div>
+  <div class="btns">
+    <a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.90612,50.63152&end=15.90612,50.63152&waypoints=15.91121,50.62939;15.911334,50.624716;15.91121,50.62939&routeType=foot_hiking" target="_blank" rel="noopener">▶ Pěší trasa</a>
+    <a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7096227,50.6351150&end=15.905732,50.6309212&waypoints=15.7576434,50.6310947&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a>
+  </div>
+  <h3>Vstupné (2 dospělí + děti 9 a 7 let)</h3>
+  <table>
+    <tr><td>Stezka korunami – rodinné 2+1 (1 150) + 2. dítě (200)</td><td class="r">1 350 Kč</td></tr>
+    <tr><td>Stachelberg – rodinné (2+2)</td><td class="r">500 Kč</td></tr>
+    <tr><td>Tobogán (dobrovolné, od 120 cm)</td><td class="r">+50 Kč/os.</td></tr>
+    <tr class="sum"><td>Celkem bez tobogánu</td><td class="r">1 850 Kč</td></tr>
+  </table>
+  <ul>
+    <li>V podzemí tvrze je zima, vezměte bundy. Platit jde hotově i kartou.</li>
+    <li>Do bunkrů nelezte, bývají v nich díry a ostré železo. Dívat se zvenku stačí. U lomu držte děti u sebe.</li>
+  </ul>
+  <div class="foot">Ceny a časy z oficiálních webů stachelberg.cz a treetop-walks.com/krkonose, ověřeno 29. 10. 2026. Stezka 9.–11. 11. zavřená.</div>
+</div>
+</details>
+
+<details class="card" style="--c:#365314">
+<summary><div class="kick">Výlet 3 · na západ</div><div class="ttl">Muzeum Krkonoš ve Vrchlabí + hrad Pecka</div>
+<div class="chips"><span class="chip">🚗 67 km</span><span class="chip">🥾 ~1 km</span><span class="chip">750 Kč</span></div><div class="more">Zobrazit program a mapu ›</div></summary>
+<div class="body">
+  <div class="when"><b>Kdy:</b> celý výlet jen <b>sobota 31. 10.</b> (Pecka 9–16, v říjnu jen víkendy). <b>Muzeum samotné jde i čt/pá</b> (út–ne 9–17), hodí se do deště.</div>
+  <img class="map" src="img/v3-auto.jpg" alt="Mapa cesty autem" width="1000" height="640" loading="lazy">
+  <div class="cap">D = Černý Důl · 1 = Muzeum Krkonoš, Husova 213, Vrchlabí · 2 = hrad Pecka</div>
+  <h3>Program</h3>
+  <table>
+    <tr><td class="t">9:00</td><td>Odjezd do Vrchlabí (11,6 km, cca 16 min)</td></tr>
+    <tr><td class="t">9:20</td><td><b>Muzeum Krkonoš</b>: příroda a historie hor, interaktivní expozice. Počítej 1,5 h.</td></tr>
+    <tr><td class="t">10:50</td><td><b>Zámecký park</b>: procházka kolem zámku, zdarma. Uvnitř zámku je radnice, prohlídky nejsou.</td></tr>
+    <tr><td class="t">11:30</td><td>Přejezd na Pecku (23,5 km, cca 31 min), oběd v obci Pecka</td></tr>
+    <tr><td class="t">13:00</td><td><b>Hrad Pecka</b>: celá prohlídka (cca 60 min), historický okruh A a Harantovské sklepy B. Otevřeno do 16:00.</td></tr>
+    <tr><td class="t">14:30</td><td>Procházka kolem hradu a domů (32 km, cca 43 min), v Černém Dole <b>cca 15:45</b></td></tr>
+  </table>
+  <div class="cap">Pěší trasa po značkách tu není: zámecký park je na krátkou procházku bez značení. Rozhlednu ani vyhlídku jsem u Vrchlabí ani u Pecky v mapových datech nenašel.</div>
+  <div class="btns">
+    <a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7096227,50.6351150&end=15.6044434,50.4789852&waypoints=15.6055413,50.6283675&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a>
+    <a class="btn g" href="https://mapy.com/fnc/v1/showmap?mapset=outdoor&center=15.6090537,50.6274763&zoom=16&marker=true" target="_blank" rel="noopener">▶ Zámecký park</a>
+  </div>
+  <h3>Vstupné (2 dospělí + děti 9 a 7 let)</h3>
+  <table>
+    <tr><td>Muzeum Krkonoš – rodinné <span class="warn">(cena z r. 2023, ověř)</span></td><td class="r">400 Kč</td></tr>
+    <tr><td>Hrad Pecka – rodinné, celá prohlídka</td><td class="r">350 Kč</td></tr>
+    <tr class="sum"><td>Celkem</td><td class="r">750 Kč</td></tr>
+  </table>
+  <ul>
+    <li><span class="warn">Pozor:</span> známá expozice ve čtyřech dřevěných domcích na náměstí ve Vrchlabí je kvůli rekonstrukci <b>zavřená do roku 2027</b>. Jeďte do Husovy 213.</li>
+    <li>Neděle 1. 11.: Pecka v listopadu nejspíš zavřeno, před cestou volej <a href="tel:+420493799129">493 799 129</a>.</li>
+    <li>Muzeum: tel. <a href="tel:+420737225428">737 225 428</a>. Aktuální otevírací dobu jsem na webu nenašel.</li>
+  </ul>
+  <div class="foot">Pecka: hradpecka.cz, ověřeno 29. 10. 2026. Muzeum: leták KRNAP 2023.</div>
+</div>
+</details>
+</section>
+
+<div class="info"><span class="h">🧭 Navigace</span>Stáhni si aplikaci <b>Mapy.com</b> a v ní offline mapu Krkonoš. Zelená tlačítka otevřou pěší trasu, modrá navigaci autem. V lese sleduj modrou tečku, značky jsou kontrola.</div>
+<div class="info"><span class="h">📱 Appka na ploše</span>Android: v Chromu menu ⋮ → Přidat na plochu / Instalovat. iPhone: v Safari tlačítko Sdílet → Přidat na plochu. Po prvním otevření jede i bez signálu.</div>
+
+<footer>Mapy © přispěvatelé OpenStreetMap · připraveno 29. 10. 2026</footer>
+</div>
+
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b?'true':'false');});
+    document.querySelectorAll('.panel').forEach(function(p){p.hidden=(p.id!==b.dataset.p);});
+    window.scrollTo({top:0});
+  });
+});
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js');});}
+</script>
+</body>
+</html>
