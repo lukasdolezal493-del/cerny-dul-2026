@@ -86,6 +86,10 @@ details.card.done>summary .pic::after{content:"✓";position:absolute;right:-4px
 .donebtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;margin:14px 0 2px;border-radius:12px;border:2px dashed var(--g);background:#f0f8f2;color:var(--g);font-size:16px;font-weight:750;cursor:pointer;padding:6px 10px}
 details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 .updbtn{display:block;width:100%;min-height:50px;margin:18px 0 4px;border-radius:12px;border:2px solid var(--forest);background:var(--paper);color:var(--forest);font-size:16px;font-weight:750;cursor:pointer}
+.share{background:var(--paper);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;margin:14px 0 0;display:flex;gap:14px;align-items:center}
+.share img{width:120px;height:120px;flex:none;border-radius:8px;border:1px solid var(--line)}
+.share b{display:block;font-size:15.5px;margin-bottom:3px}
+.share span{font-size:13.5px;color:var(--soft)}
 </style>
 </head>
 <body>
@@ -358,7 +362,8 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 
 <button class="updbtn" type="button" id="upd">🔄 Aktualizovat appku</button>
 <div class="cap" id="updmsg" style="text-align:center">Stáhne nejnovější verzi. Potřebuje internet, odznaky zůstanou.</div>
-<footer>Mapy © přispěvatelé OpenStreetMap · verze 4 · 29. 10. 2026</footer>
+<div class="share"><img src="img/qr.png" alt="QR kód s odkazem na appku" width="120" height="120"><div><b>📲 Pošli appku dál</b><span>Ať si druhý naskenuje QR kód fotoaparátem v mobilu, otevře se mu appka. Pak stačí Přidat na plochu.</span></div></div>
+<footer>Mapy © přispěvatelé OpenStreetMap · verze 5 · 29. 10. 2026</footer>
 </div>
 
 <script>

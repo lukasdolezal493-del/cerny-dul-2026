@@ -1,6 +1,6 @@
-const C="cerny-dul-2026-v4";
+const C="cerny-dul-2026-v5";
 const A=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png",
-"./img/p1.jpg","./img/p2.jpg","./img/p3.jpg","./img/v1-auto.jpg","./img/v1-pesky.jpg","./img/v2-auto.jpg","./img/v2-pesky.jpg","./img/v3-auto.jpg"];
+"./img/p1.jpg","./img/p2.jpg","./img/p3.jpg","./img/v1-auto.jpg","./img/v1-pesky.jpg","./img/v2-auto.jpg","./img/v2-pesky.jpg","./img/v3-auto.jpg","./img/qr.png"];
 // cache:"reload" = stáhnout ze sítě, ne ze staré paměti prohlížeče
 self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(A.map(u=>new Request(u,{cache:"reload"})))).then(()=>self.skipWaiting()));});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()));});
