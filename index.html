@@ -90,6 +90,11 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 .share img{width:120px;height:120px;flex:none;border-radius:8px;border:1px solid var(--line)}
 .share b{display:block;font-size:15.5px;margin-bottom:3px}
 .share span{font-size:13.5px;color:var(--soft)}
+.mapwrap{position:relative}
+.mapwrap .me{display:none;position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:#1a73e8;border:3px solid #fff;box-shadow:0 0 0 6px rgba(26,115,232,.25),0 1px 4px rgba(0,0,0,.4)}
+.mapwrap.on .me{display:block}
+.gpsbtn{margin:8px 0 0;min-height:44px;padding:0 14px;border-radius:10px;border:2px solid #1a73e8;background:#fff;color:#1a73e8;font-size:15px;font-weight:700;cursor:pointer}
+.gpsmsg{font-size:13px;color:var(--soft);margin:4px 0 8px}
 </style>
 </head>
 <body>
@@ -114,32 +119,40 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 
 <div class="wrap">
 <div class="badges" id="badges">
-  <div class="bh"><b>🏅 Odznaky výpravy</b><span id="bcount">0 / 6</span></div>
+  <div class="bh"><b>🏅 Odznaky výpravy</b><span id="bcount">0 / 13</span></div>
   <div class="bgrid">
     <div class="badge" data-b="p1"><span class="e">🪨</span>Strážce lomu</div>
     <div class="badge" data-b="p2"><span class="e">⛏️</span>Mladý horník</div>
     <div class="badge" data-b="p3"><span class="e">🏔️</span>Dobyvatel Tetřevích bud</div>
+    <div class="badge" data-b="p4"><span class="e">🌿</span>Strážce rašeliniště</div>
+    <div class="badge" data-b="p5"><span class="e">🥾</span>Poutník k Hoffmannovkám</div>
+    <div class="badge" data-b="p6"><span class="e">🔦</span>Hledač štol</div>
     <div class="badge" data-b="v1"><span class="e">🗿</span>Lovec soch</div>
     <div class="badge" data-b="v2"><span class="e">🪖</span>Bunkrový průzkumník</div>
     <div class="badge" data-b="v3"><span class="e">🏰</span>Rytíř z Pecky</div>
+    <div class="badge" data-b="v4"><span class="e">🧗</span>Skalní průzkumník</div>
+    <div class="badge" data-b="v5"><span class="e">🦒</span>Safari ranger</div>
+    <div class="badge" data-b="v6"><span class="e">🌾</span>Babiččin vnuk</div>
+    <div class="badge" data-b="v7"><span class="e">🐻</span>Medvědí stopař</div>
   </div>
-  <div class="champ" id="champ">🎉 Všech 6 odznaků! Jste Krkonošští mistři! 🎉</div>
+  <div class="champ" id="champ">🎉 Všech 13 odznaků! Jste Krkonošští mistři! 🎉</div>
 </div>
 <div class="tabs" role="tablist">
-  <button role="tab" aria-selected="true" data-p="pp">🥾 Od chaty</button>
-  <button role="tab" aria-selected="false" data-p="vv">🚗 Výlety autem</button>
+  <button role="tab" aria-selected="true" data-p="pp">🥾 Pěšky</button>
+  <button role="tab" aria-selected="false" data-p="vv">🚗 Autem</button>
+  <button role="tab" aria-selected="false" data-p="ii">ℹ️ Info</button>
 </div>
 
 <!-- ================= PROCHÁZKY ================= -->
 <section class="panel" id="pp">
-<p class="intro">Okruhy po turistických značkách přímo od chaty a zpět. Klepni na okruh a rozbalí se mapa a popis cesty.</p>
+<p class="intro">Trasy po turistických značkách. Většina začíná přímo u chaty. Klepni na trasu a rozbalí se mapa a popis cesty. Na mapě tras funguje tlačítko <b>📍 Kde jsem</b> (GPS, i bez signálu).</p>
 
 <details class="card" data-id="p1" style="--c:var(--g)">
 <summary><span class="pic" aria-hidden="true">🪨</span><div class="kick">Malá procházka</div><div class="ttl">Okruh kolem lomu</div>
 <div class="chips"><span class="chip">3,7 km</span><span class="chip">+140 m</span><span class="chip">1,5–2 h</span><span class="chip"><span class="mk g"></span>zelený roh</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
   <div class="when"><b>Značka:</b> <span class="mk g"></span><b>zelený roh</b>, místní okruh (naučná stezka Okolo lomu). Úsek kolem lanovek vede zároveň se <span class="mk y"></span>žlutou.</div>
-  <img class="map" src="img/p1.jpg" alt="Mapa okruhu kolem lomu" width="1000" height="600" loading="lazy">
+  <div class="mapwrap" data-geo="p1"><img class="map" src="img/p1.jpg" alt="Mapa okruhu kolem lomu" width="1000" height="600" loading="lazy"><span class="me"></span></div><button class="gpsbtn" type="button">📍 Kde jsem</button><div class="gpsmsg"></div>
   <div class="cap">H = chata · N = náměstí · V = vyhlídka · 1–3 = rozcestníky</div>
   <h3>Kudy</h3>
   <table>
@@ -148,12 +161,12 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
     <tr><td class="t">V</td><td><b>Vyhlídka</b> (1,4 km). Dobré místo na svačinu.</td></tr>
     <tr><td class="t">1</td><td>Rozcestník (1,7 km). Dál po zeleném rohu, mírně do kopce.</td></tr>
     <tr><td class="t">2</td><td>Rozcestník (2,6 km). Tady se k zelenému rohu přidá <span class="mk y"></span><b>žlutá</b> a obě vás vedou z kopce dolů k lanovkám.</td></tr>
-    <tr><td class="t">3</td><td>Dolní stanice lanovek (3,3 km), restaurace <b>Horská služba</b>. Odtud je to pár kroků k chatě.</td></tr>
+    <tr><td class="t">3</td><td>Dolní stanice lanovek (3,3 km). Odtud je to pár kroků k chatě.</td></tr>
   </table>
   <h3>Občerstvení</h3>
   <ul>
     <li>Na samotné trase žádná bouda není. Vezměte si svačinu a pití.</li>
-    <li>Cestou zpátky jsou u lanovek a na náměstí: <b>Horská služba</b>, hospoda <b>U Šťastných</b> a restaurace <b>Pošta</b>.</li>
+    <li>V cíli: <b>Restaurace Pošta</b> na náměstí (denně 8–10 a 11–22, tel. <a href="tel:+420730590830">730 590 830</a>).</li>
     <li>Okraj lomu je strmý, držte děti na cestě.</li>
   </ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.69978,50.63459;15.69625,50.63454;15.69802,50.64032&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
@@ -167,19 +180,19 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 <div class="chips"><span class="chip">5,2 km</span><span class="chip">+190 m</span><span class="chip">2–2,5 h</span><span class="chip"><span class="mk r"></span>červený roh</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
   <div class="when"><b>Značka:</b> <span class="mk r"></span><b>červený roh</b>, místní naučná stezka o hornické historii Černého Dolu. Začátek a konec jdou zároveň se <span class="mk b"></span>modrou.</div>
-  <img class="map" src="img/p2.jpg" alt="Mapa stezky za sv. Barborou" width="1000" height="600" loading="lazy">
+  <div class="mapwrap" data-geo="p2"><img class="map" src="img/p2.jpg" alt="Mapa stezky za sv. Barborou" width="1000" height="600" loading="lazy"><span class="me"></span></div><button class="gpsbtn" type="button">📍 Kde jsem</button><div class="gpsmsg"></div>
   <div class="cap">H = chata · N = náměstí · V = vyhlídka · 1–2 = otočné body / rozcestníky</div>
   <h3>Kudy</h3>
   <table>
     <tr><td class="t">H → N</td><td>Od chaty 140 m na náměstí k rozcestníku <b>Černý Důl (nám.)</b>.</td></tr>
-    <tr><td class="t">N</td><td>Chytněte <span class="mk r"></span><b>červený roh</b>. Prvních 800 m jde spolu se žlutou (prvních 500 m i s modrou) kolem restaurace <b>U Pajeru</b>, pak se oddělí a stoupá nad obec.</td></tr>
+    <tr><td class="t">N</td><td>Chytněte <span class="mk r"></span><b>červený roh</b>. Prvních 800 m jde spolu se žlutou (prvních 500 m i s modrou) přes náměstí, pak se oddělí a stoupá nad obec.</td></tr>
     <tr><td class="t">V</td><td><b>Vyhlídka</b> (0,8 km).</td></tr>
     <tr><td class="t">1</td><td>Po červeném rohu stráněmi na východ až k silnici na Janské Lázně (asi 2,4 km). Tady se trasa stáčí zpátky na západ.</td></tr>
     <tr><td class="t">2</td><td>Rozcestník pod obcí (4,1 km). Dál po červeném rohu spolu s <span class="mk b"></span><b>modrou</b> podél silnice zpátky na náměstí.</td></tr>
     <tr><td class="t">N → H</td><td>Z náměstí 140 m k chatě (celkem 5,2 km).</td></tr>
   </table>
   <h3>Občerstvení</h3>
-  <ul><li>Na trase žádná bouda není. Na startu a v cíli jsou restaurace <b>U Pajeru</b> a <b>Pošta</b> a hospoda <b>U Šťastných</b>.</li></ul>
+  <ul><li>Na trase žádná bouda není. Na startu a v cíli: <b>Restaurace Pošta</b> na náměstí (denně 8–10 a 11–22, tel. <a href="tel:+420730590830">730 590 830</a>).</li></ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70987,50.6348;15.71558,50.63824;15.733231,50.632265;15.71289,50.6277;15.70987,50.6348&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <div class="foot">Délka a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
   <button class="donebtn" type="button" data-id="p2" data-nm="Mladý horník">✓ Splněno – získat odznak</button>
@@ -191,7 +204,7 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 <div class="chips"><span class="chip">11,4 km</span><span class="chip">+530 m</span><span class="chip">4,5–5 h</span><span class="chip"><span class="mk y"></span><span class="mk g"></span><span class="mk b"></span></span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
 <div class="body">
   <div class="when"><b>Značky:</b> nahoru po <span class="mk y"></span><b>žluté</b>, nahoře po <span class="mk g"></span><b>zelené</b>, dolů po <span class="mk b"></span><b>modré</b>. Vyrazte <b>nejpozději v 10:00</b>, slunce zapadá kolem 16:40.</div>
-  <img class="map" src="img/p3.jpg" alt="Mapa okruhu přes Tetřeví boudy" width="1000" height="820" loading="lazy">
+  <div class="mapwrap" data-geo="p3"><img class="map" src="img/p3.jpg" alt="Mapa okruhu přes Tetřeví boudy" width="1000" height="820" loading="lazy"><span class="me"></span></div><button class="gpsbtn" type="button">📍 Kde jsem</button><div class="gpsmsg"></div>
   <div class="cap">H = chata · N = náměstí · V = vyhlídka Bönischovy boudy · 1 = Rejdiště · T = Tetřeví boudy (oběd) · 2 = Hrnčířské boudy · 3, 4 = Údolí Čisté</div>
   <h3>Kudy</h3>
   <table>
@@ -205,9 +218,9 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   </table>
   <h3>Občerstvení</h3>
   <ul>
-    <li><b>Tetřeví Boudy</b> (4,7 km): jediné jisté místo na jídlo nahoře. <span class="warn">Otevírací dobu jsem neověřil, před odchodem zavolej.</span></li>
-    <li>U Hrnčířských bud jsou další horské boudy (Lidická bouda, Pražská bouda), ale leží asi 1 km mimo trasu. Otevírací doba neověřena.</li>
-    <li>Dole v cíli: <b>U Pajeru</b>, <b>Pošta</b>, <b>U Šťastných</b>.</li>
+    <li><b>Tetřeví Boudy</b> (4,7 km): hotelová restaurace, otevřená i pro lidi zvenku. <span class="warn">Otevírací doba nezveřejněná, před odchodem zavolej</span> <a href="tel:+420602322399">602 322 399</a>.</li>
+    <li><b>Pražská bouda</b> (denně 11–22, velký dětský koutek, tel. <a href="tel:+420733695389">733 695 389</a>): od rozcestníku Hrnčířské boudy asi 1 km odbočkou po <span class="mk r"></span>červené. Dobrá záloha, kdyby Tetřeví boudy měly zavřeno.</li>
+    <li>Dole v cíli: <b>Restaurace Pošta</b> na náměstí (denně 8–10 a 11–22, tel. <a href="tel:+420730590830">730 590 830</a>).</li>
   </ul>
   <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70011,50.64465;15.69314,50.66065;15.69631,50.66903;15.71847,50.6696;15.71214,50.66104&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a></div>
   <ul>
@@ -218,11 +231,93 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <button class="donebtn" type="button" data-id="p3" data-nm="Dobyvatel Tetřevích bud">✓ Splněno – získat odznak</button>
 </div>
 </details>
+<details class="card" data-id="p4" style="--c:#2f6b45">
+<summary><span class="pic" aria-hidden="true">🌿</span><div class="kick">Lanovkou nahoru · lehká</div><div class="ttl">Černá hora a rašeliniště</div>
+<div class="chips"><span class="chip">5,5 km nahoře</span><span class="chip">+180 m</span><span class="chip">2,5–3 h</span><span class="chip">🔭 2 vyhlídky</span><span class="chip">🍽 2 boudy</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+
+  <div class="when"><b>Lanovka Černohorský Express</b> (Janské Lázně, autem 5 km, 7 min): 24. 10.–1. 11. denně 9–16, v listopadu jen 7.–8. 11. a 14.–17. 11. (9–16). Jezdí každých 30 min. Poslední jízdu dolů v 16:00 nezmeškat!</div>
+  <div class="mapwrap" data-geo="p4"><img class="map" src="img/p4.jpg" alt="Mapa okruhu na Černé hoře" width="1000" height="760" loading="lazy"><span class="me"></span></div><button class="gpsbtn" type="button">📍 Kde jsem</button><div class="gpsmsg"></div>
+  <div class="cap">L = horní stanice lanovky · 1 = Černá bouda · 2 = Pod Černou boudou · 3 = Václavák · V = Hubertova vyhlídka · B = Velké Pardubické boudy · 4 = Nad Pardubickými boudami</div>
+  <h3>Kudy</h3>
+  <table>
+    <tr><td class="t">L</td><td>Z horní stanice lanovky po <span class="mk y"></span><b>žluté</b> k hotelu <b>Černá bouda</b> (0,9 km). U ní je vyhlídka Hledisko a bistro.</td></tr>
+    <tr><td class="t">1</td><td>Tady chytněte <b>naučnou stezku Černohorské rašeliniště</b> (<span class="mk g"></span>zelená šikmá) a jděte po ní přes <b>Pod Černou boudou</b> (1,2 km) a <b>Václavák</b> (1,5 km).</td></tr>
+    <tr><td class="t">V</td><td>Po dřevěných chodnících přes rašeliniště k <b>Hubertově vyhlídce</b> (2,4 km).</td></tr>
+    <tr><td class="t">B</td><td>Dál po naučné stezce k <b>Velkým Pardubickým boudám</b> (3,8 km), kde je restaurace.</td></tr>
+    <tr><td class="t">4</td><td>Po <span class="mk g"></span>zelené k rozcestí <b>Nad Pardubickými boudami</b> (4,2 km), pak po <span class="mk b"></span><b>modré</b> k Černé boudě a po <span class="mk y"></span>žluté zpět k lanovce (5,5 km).</td></tr>
+  </table>
+  <h3>Občerstvení a zábava</h3>
+  <ul>
+    <li><b>Černá bouda</b>: restaurace do 8. 11. denně 10–16:30, tel. <a href="tel:+420731855855">731 855 855</a>. Dětský koutek a hřiště.</li>
+    <li><b>Velké Pardubické boudy</b> na trase (3,8 km): otevírací dobu jsem nenašel.</li>
+    <li><b>Dětský park Kabinka</b> u horní stanice (trampolíny, lezecká stěna): s jízdenkou zdarma, 31. 10.–1. 11. 10–15:30.</li>
+    <li><b>Rozhledna Panorama</b> 100 m od lanovky, plošina ve 21 m, otevřeno za příznivého počasí.</li>
+  </ul>
+  <h3>Cena (2 dospělí + děti 9 a 7)</h3>
+  <table>
+    <tr><td>Lanovka zpáteční: 2× 380 + 2× 240 (online)</td><td class="r">1 240 Kč</td></tr>
+    <tr><td>Na pokladně: 2× 440 + 2× 280</td><td class="r">1 440 Kč</td></tr>
+    <tr><td>Parkoviště P1 u dolní stanice, celý den</td><td class="r">130 Kč</td></tr>
+  </table>
+  <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.75157,50.64808&end=15.75157,50.64808&waypoints=15.74745,50.65452;15.74415,50.65976;15.75149,50.66454;15.75579,50.65698&routeType=foot_hiking" target="_blank" rel="noopener">▶ Okruh v Mapy.com</a><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7649,50.6326&routeType=car_fast" target="_blank" rel="noopener">▶ K lanovce autem</a></div>
+  <ul><li><span class="warn">Ověř před cestou:</span> web lanovky zmiňuje výměnu dřevěného chodníku na rašeliništi. Když bude zavřený, jděte od Černé boudy po žluté a modré kolem Velkých Pardubických bud.</li>
+  <li>Na rašeliništi je stezka každý rok zavřená 15. 3.–31. 5. Kočárek ne.</li></ul>
+  <div class="foot">Lanovka a ceny: leto.skiresort.cz, ověřeno 29. 10. 2026. Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <button class="donebtn" type="button" data-id="p4" data-nm="Strážce rašeliniště">✓ Splněno – získat odznak</button>
+</div>
+</details>
+<details class="card" data-id="p5" style="--c:#9a6700">
+<summary><span class="pic" aria-hidden="true">🥾</span><div class="kick">Od chaty · náročná</div><div class="ttl">Přes Zrcadlové boudy k Hoffmannovým boudám</div>
+<div class="chips"><span class="chip">5,1 km jedním směrem</span><span class="chip">+445 m</span><span class="chip">2–2,5 h</span><span class="chip">🍽 bouda v cíli</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+
+  <div class="when"><b>Jednosměrná trasa.</b> Autobus zpátky jezdí jen v zimě (skibus). Zpátky buď stejnou cestou (celkem 10,2 km), nebo pro vás jeden dospělý dojede autem: silnicí je to jen 4 km. Hodí se spojit se <b>Stezkou korunami</b>, která je hned vedle.</div>
+  <div class="mapwrap" data-geo="p5"><img class="map" src="img/p5.jpg" alt="Mapa trasy k Hoffmannovým boudám" width="1000" height="640" loading="lazy"><span class="me"></span></div><button class="gpsbtn" type="button">📍 Kde jsem</button><div class="gpsmsg"></div>
+  <div class="cap">H = chata · N = náměstí · 1 = Vendlovka · 2 = U Zrcadlových bud · 3 = Nad Hoffmannovou boudou · B = Hoffmannova bouda · S = Stezka korunami</div>
+  <h3>Kudy</h3>
+  <table>
+    <tr><td class="t">N</td><td>Z náměstí po <span class="mk y"></span><b>žluté</b> do kopce. Hned na začátku je to nejprudší, 400 m výškových na 2,3 km.</td></tr>
+    <tr><td class="t">1</td><td>Rozcestník <b>Vendlovka</b>, 1 000 m n. m. (2,5 km), nejvyšší bod. Dál po žluté.</td></tr>
+    <tr><td class="t">2</td><td><b>U Zrcadlových bud</b> (2,7 km): přejděte na <span class="mk b"></span><b>modrou</b> dolů.</td></tr>
+    <tr><td class="t">3</td><td><b>Nad Hoffmannovou boudou</b> (4,1 km): přejděte na <span class="mk y"></span><b>žlutou</b>.</td></tr>
+    <tr><td class="t">B</td><td><b>Hoffmannova bouda</b> (5,1 km), 788 m n. m. Restaurace, kousek dál Stezka korunami stromů.</td></tr>
+  </table>
+  <h3>Občerstvení</h3>
+  <ul><li><b>Hoffmannova bouda</b>: domácí česká kuchyně, dětský koutek, uváděno denně 11–22 (údaj může být starý), tel. <a href="tel:+420777946434">777 946 434</a>.</li></ul>
+  <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.75589,50.63243&waypoints=15.73385,50.6456;15.74637,50.6379&routeType=foot_hiking" target="_blank" rel="noopener">▶ Trasa v Mapy.com</a></div>
+  <div class="foot">Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <button class="donebtn" type="button" data-id="p5" data-nm="Poutník k Hoffmannovkám">✓ Splněno – získat odznak</button>
+</div>
+</details>
+<details class="card" data-id="p6" style="--c:#0969da">
+<summary><span class="pic" aria-hidden="true">🔦</span><div class="kick">Od chaty · střední</div><div class="ttl">Hornickým údolím k Berghausu</div>
+<div class="chips"><span class="chip">7,2 km tam a zpět</span><span class="chip">+300 m</span><span class="chip">2,5–3 h</span><span class="chip"><span class="mk b"></span>modrá</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+
+  <div class="when"><b>Značka:</b> celou cestu nahoru i zpátky po <span class="mk b"></span><b>modré</b> údolím potoka Čistá. Nahoře krátký okruh <b>hornické naučné stezky Berghaus</b> (<span class="mk g"></span>zelená šikmá) kolem stop po těžbě. Kluci navážou na Stezku za sv. Barborou.</div>
+  <div class="mapwrap" data-geo="p6"><img class="map" src="img/p6.jpg" alt="Mapa trasy k Berghausu" width="1000" height="760" loading="lazy"><span class="me"></span></div><button class="gpsbtn" type="button">📍 Kde jsem</button><div class="gpsmsg"></div>
+  <div class="cap">H = chata · N = náměstí · 1 = rozcestník Údolí Čisté · B = okruh naučné stezky Berghaus</div>
+  <h3>Kudy</h3>
+  <table>
+    <tr><td class="t">N</td><td>Z náměstí po <span class="mk b"></span><b>modré</b> na sever údolím, pořád mírně do kopce.</td></tr>
+    <tr><td class="t">1</td><td>Rozcestník <b>Údolí Čisté</b> (3,2 km od chaty).</td></tr>
+    <tr><td class="t">B</td><td>Okruh <b>naučné stezky Berghaus</b> (0,9 km) se zelenou šikmou značkou, pak zpět k rozcestníku.</td></tr>
+    <tr><td class="t">1 → N</td><td>Stejnou cestou po modré dolů do Černého Dolu (celkem 7,2 km).</td></tr>
+  </table>
+  <h3>Občerstvení</h3>
+  <ul><li>Na trase nic. V cíli: <b>Restaurace Pošta</b> na náměstí (denně 8–10 a 11–22, tel. <a href="tel:+420730590830">730 590 830</a>).</li></ul>
+  <div class="btns"><a class="btn g" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.7086503,50.6357924&waypoints=15.70802,50.6579;15.7071651,50.6600708;15.70802,50.6579&routeType=foot_hiking" target="_blank" rel="noopener">▶ Trasa v Mapy.com</a></div>
+  <ul><li>Muzeum Podzemí Krkonoš (na úřadě v Černém Dole): út 10–12, čt 12–14, jen po rezervaci na <a href="tel:+420734403332">734 403 332</a>.</li></ul>
+  <div class="foot">Trasa a značení z OpenStreetMapu, převýšení z EU-DEM.</div>
+  <button class="donebtn" type="button" data-id="p6" data-nm="Hledač štol">✓ Splněno – získat odznak</button>
+</div>
+</details>
 </section>
 
 <!-- ================= VÝLETY ================= -->
 <section class="panel" id="vv" hidden>
-<p class="intro">Tři celodenní výlety autem. Nejlepší den je <b>sobota 31. 10.</b>, kdy má ještě všechno otevřeno.</p>
+<p class="intro">Celodenní výlety autem. Nejlepší den je <b>sobota 31. 10.</b>, kdy má ještě všechno otevřeno.</p>
 
 <details class="card" data-id="v1" style="--c:#9a3412">
 <summary><span class="pic" aria-hidden="true">🗿</span><div class="kick">Výlet 1 · na jih</div><div class="ttl">Podzemí Josefov + Kuks a Braunův Betlém</div>
@@ -242,7 +337,7 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
     <tr><td class="t">15:45</td><td>Domů (44 km, cca 51 min), v Černém Dole <b>cca 16:40</b>. Slunce zapadá v 16:36.</td></tr>
   </table>
   <h3>Pěšky: Kuks → Braunův Betlém (3,3 km jedním směrem)</h3>
-  <img class="map" src="img/v1-pesky.jpg" alt="Mapa pěší trasy k Braunovu Betlému" width="1000" height="560" loading="lazy">
+  <div class="mapwrap" data-geo="v1-pesky"><img class="map" src="img/v1-pesky.jpg" alt="Mapa pěší trasy k Braunovu Betlému" width="1000" height="560" loading="lazy"><span class="me"></span></div><button class="gpsbtn" type="button">📍 Kde jsem</button><div class="gpsmsg"></div>
   <div class="cap">H = hospital · 1–4 = rozcestníky · B = Braunův Betlém · barva čáry = barva značky</div>
   <table>
     <tr><td class="t">H</td><td>Od hospitálu dojděte dolů k rozcestníku <b>Kuks (odb.)</b>, je to asi 250 m.</td></tr>
@@ -283,7 +378,7 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <h3>Program</h3>
   <table>
     <tr><td class="t">9:20</td><td>Odjezd (4 km, 7 min)</td></tr>
-    <tr><td class="t">9:30</td><td><b>Stezka korunami stromů</b>: lávka v korunách a 45m věž, s tobogánem dolů (od 120 cm, příplatek). Počítej 1,5–2 h.</td></tr>
+    <tr><td class="t">9:30</td><td><b>Stezka korunami stromů</b>: lávka v korunách a 45m věž, s tobogánem dolů (od 120 cm, příplatek). Nově (od dubna 2026) je u ní i <b>Medvědí stezka se skutečnými medvědy</b> Michalem a Alicí. Jestli je v ceně a jestli medvědi na podzim nespí, web neuvádí. Počítej 1,5–2 h.</td></tr>
     <tr><td class="t">11:30</td><td>Oběd (restaurace u stezky nebo cestou v Trutnově)</td></tr>
     <tr><td class="t">12:30</td><td>Přejezd na Stachelberg (17 km, cca 21 min)</td></tr>
     <tr><td class="t">13:00</td><td><b>Dělostřelecká tvrz Stachelberg</b>: muzeum opevnění a podzemí tvrze.</td></tr>
@@ -291,7 +386,7 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
     <tr><td class="t">15:45</td><td>Domů (21 km, cca 25 min), v Černém Dole <b>cca 16:15</b>, ještě za světla.</td></tr>
   </table>
   <h3>Pěšky: k rozhledně Eliška a po bunkrech</h3>
-  <img class="map" src="img/v2-pesky.jpg" alt="Mapa pěší trasy u Stachelbergu" width="1000" height="640" loading="lazy">
+  <div class="mapwrap" data-geo="v2-pesky"><img class="map" src="img/v2-pesky.jpg" alt="Mapa pěší trasy u Stachelbergu" width="1000" height="640" loading="lazy"><span class="me"></span></div><button class="gpsbtn" type="button">📍 Kde jsem</button><div class="gpsmsg"></div>
   <div class="cap">P = parkoviště · T = tvrz · E = rozhledna Eliška · B = otočka · šedé tečky = bunkry · čára = značka červená + zelená</div>
   <table>
     <tr><td class="t">P</td><td>Od parkoviště a rozcestníku <b>Babí – Stachelberg</b> jděte po <span class="mk r"></span><b>červené</b>. Ve stejném směru vede i <span class="mk g"></span><b>zelená</b> a naučná stezka Opevněné Trutnovsko.</td></tr>
@@ -355,15 +450,205 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
   <button class="donebtn" type="button" data-id="v3" data-nm="Rytíř z Pecky">✓ Splněno – získat odznak</button>
 </div>
 </details>
+<details class="card" data-id="v4" style="--c:#7a4d00">
+<summary><span class="pic" aria-hidden="true">🧗</span><div class="kick">Výlet 4 · na východ</div><div class="ttl">Adršpašské skály</div>
+<div class="chips"><span class="chip">🚗 41 km, 50 min</span><span class="chip">🥾 3,5 km</span><span class="chip">670 Kč</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+
+  <div class="when"><b>Otevřeno:</b> duben–říjen denně 8–18, listopad–březen denně 8–16. Kapacita je omezená, <b>vstupenky a parkování kup online den předem</b> (levnější a jisté). Lodička na jezírku jezdí jen do 31. 10.</div>
+  <img class="map" src="img/v4-auto.jpg" alt="Mapa cesty do Adršpachu" width="1000" height="600" loading="lazy">
+  <div class="cap">D = Černý Důl · A = Adršpach</div>
+  <h3>Program</h3>
+  <table>
+    <tr><td class="t">8:30</td><td>Odjezd (41 km, cca 50 min).</td></tr>
+    <tr><td class="t">9:30</td><td><b>Skalní město:</b> okruh po <span class="mk g"></span><b>zelené</b> 3,5 km, asi 2,5 h. Prvních 1,3 km k Malému vodopádu je po rovině, pak skalní labyrint, Gotická branka a Velký vodopád. Na celém okruhu je skoro 2 000 schodů.</td></tr>
+    <tr><td class="t">11:00</td><td><b>Lodička po Skalním jezírku</b> (asi 20 min, do 31. 10., 9:00–15:45, jen hotově).</td></tr>
+    <tr><td class="t">13:00</td><td>Oběd v Adršpachu a cesta domů.</td></tr>
+  </table>
+  <h3>Vstupné (2 dospělí + děti 9 a 7)</h3>
+  <table>
+    <tr><td>Rodinné 2+2 online předem (na místě 640)</td><td class="r">490 Kč</td></tr>
+    <tr><td>Parkoviště online (na místě 220)</td><td class="r">180 Kč</td></tr>
+    <tr><td>Lodička 2× 100 + 2× 50 (jen do 31. 10.)</td><td class="r">300 Kč</td></tr>
+    <tr class="sum"><td>Celkem bez lodičky</td><td class="r">670 Kč</td></tr>
+  </table>
+  <div class="btns"><a class="btn g" href="https://www.adrspasskeskaly.cz/" target="_blank" rel="noopener">▶ Vstupenky online</a><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=16.1085190,50.6189263&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
+  <ul><li>Tel. <a href="tel:+420491586012">491 586 012</a>. Pevné boty, na schodech bývá mokro.</li></ul>
+  <div class="foot">Ceny a časy: adrspasskeskaly.cz a adrspach.cz, ověřeno 29. 10. 2026.</div>
+  <button class="donebtn" type="button" data-id="v4" data-nm="Skalní průzkumník">✓ Splněno – získat odznak</button>
+</div>
+</details>
+<details class="card" data-id="v5" style="--c:#b5561e">
+<summary><span class="pic" aria-hidden="true">🦒</span><div class="kick">Výlet 5 · na jih · i do deště</div><div class="ttl">Safari Park Dvůr Králové</div>
+<div class="chips"><span class="chip">🚗 32 km, 45 min</span><span class="chip">celý den</span><span class="chip">780 Kč</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+
+  <div class="when"><b>Otevřeno celý rok</b> denně od 9:00, do 1. 11. do 18:00, od 2. 11. do 16:00. Parkování přímo u parku zdarma (Štefánikova 1029).</div>
+  <img class="map" src="img/v5-auto.jpg" alt="Mapa cesty do Safari Parku" width="1000" height="600" loading="lazy">
+  <div class="cap">D = Černý Důl · S = Safari Park</div>
+  <h3>Co tam</h3>
+  <ul>
+    <li><b>Safaribus</b> mezi zvířaty jezdí každý den, 70 Kč za osobu (do Lvího safari nezajíždí).</li>
+    <li><b>Afrika Truck do Lvího safari</b>: 180 Kč za osobu, 28. 10.–1. 11. denně 10–16, pak jen o víkendech do 1. 11. Lístky jen na pokladně.</li>
+    <li>Do 1. 11. akce <b>Týden duchů</b>.</li>
+    <li>Počítej 5–6 hodin. Velká část je venku, ale pavilony jsou pod střechou.</li>
+  </ul>
+  <h3>Vstupné (2 dospělí + děti 9 a 7)</h3>
+  <table>
+    <tr><td>Rodinné zimní (470 + 2× 155), jen na pokladně</td><td class="r">780 Kč</td></tr>
+    <tr><td>Safaribus 4× 70 (dobrovolné)</td><td class="r">+280 Kč</td></tr>
+  </table>
+  <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.79722,50.43333&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
+  <ul><li>Tel. <a href="tel:+420770123218">770 123 218</a>.</li></ul>
+  <div class="foot">safaripark.cz, ověřeno 29. 10. 2026. Hlavní sezóna je dražší (rodinné 590 Kč + 235 Kč za dítě).</div>
+  <button class="donebtn" type="button" data-id="v5" data-nm="Safari ranger">✓ Splněno – získat odznak</button>
+</div>
+</details>
+<details class="card" data-id="v6" style="--c:#5b6b2e">
+<summary><span class="pic" aria-hidden="true">🌾</span><div class="kick">Výlet 6 · na jihovýchod</div><div class="ttl">Babiččino údolí a Ratibořice</div>
+<div class="chips"><span class="chip">🚗 54 km, 70 min</span><span class="chip">🥾 procházka</span><span class="chip">od 460 Kč</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+
+  <div class="when"><span class="warn">Letos naposledy v neděli 1. 11.</span> Zámek, Rudrův mlýn a Staré bělidlo mají otevřeno 29. 10.–1. 11., vždy 10–15. Od 2. 11. je vše zavřené až do Vánoc.</div>
+  <img class="map" src="img/v6-auto.jpg" alt="Mapa cesty do Ratibořic" width="1000" height="600" loading="lazy">
+  <div class="cap">D = Černý Důl · R = zámek Ratibořice · N = Náchod (volitelně)</div>
+  <h3>Program</h3>
+  <table>
+    <tr><td class="t">9:00</td><td>Odjezd (54 km, cca 70 min). Parkoviště před zámeckým parkem.</td></tr>
+    <tr><td class="t">10:15</td><td><b>Zámek Ratibořice</b>, okruh 1 (30 min).</td></tr>
+    <tr><td class="t">11:00</td><td>Procházka <b>Babiččiným údolím</b> podél Úpy: <b>Rudrův mlýn</b> (prohlídka 30 min), Viktorčin splav, <b>Staré bělidlo</b> (zdarma). Počítej 2–3 h.</td></tr>
+    <tr><td class="t">14:00</td><td>Volitelně <b>zámek Náchod</b> (11 km): do 1. 11. prohlídka „ze sklepení na věž“, 10–15. <b>Medvědi v příkopu už nejsou</b> (chov skončil 2025).</td></tr>
+  </table>
+  <h3>Vstupné (2 dospělí + děti 9 a 7)</h3>
+  <table>
+    <tr><td>Zámek Ratibořice, okruh 1: 2× 180 + 2× 50</td><td class="r">460 Kč</td></tr>
+    <tr><td>Rudrův mlýn 4× 80</td><td class="r">320 Kč</td></tr>
+    <tr><td>Staré bělidlo</td><td class="r">zdarma</td></tr>
+    <tr><td>Náchod, sklepení a věž: 2× 100 + 2× 30 (volitelně)</td><td class="r">260 Kč</td></tr>
+  </table>
+  <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=16.0525814,50.4150145&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
+  <ul><li>Ratibořice tel. <a href="tel:+420491452123">491 452 123</a>, Náchod <a href="tel:+420773771818">773 771 818</a>.</li></ul>
+  <div class="foot">zamek-ratiborice.cz, zamek-nachod.cz, ověřeno 29. 10. 2026.</div>
+  <button class="donebtn" type="button" data-id="v6" data-nm="Babiččin vnuk">✓ Splněno – získat odznak</button>
+</div>
+</details>
+<details class="card" data-id="v7" style="--c:#6b4f2a">
+<summary><span class="pic" aria-hidden="true">🐻</span><div class="kick">Výlet 7 · na západ</div><div class="ttl">Medvědí stezka ve Špindlu</div>
+<div class="chips"><span class="chip">🚗 28 km, 35 min</span><span class="chip">🥾 8,6 km z kopce</span><span class="chip">3–4 h</span></div><div class="more">Zobrazit mapu a trasu ›</div></summary>
+<div class="body">
+
+  <div class="when"><b>Lanovka Medvědín</b> (Špindlerův Mlýn): 24.–31. 10. denně 9–17, 1. 11. a v listopadu jen 7.–8. 11. a 14.–17. 11. (9–16). Jinak stojí.</div>
+  <img class="map" src="img/p7-auto.jpg" alt="Mapa cesty do Špindlerova Mlýna" width="1000" height="600" loading="lazy">
+  <div class="cap">D = Černý Důl · M = dolní stanice lanovky Medvědín (parkoviště P3)</div>
+  <h3>Jak na to</h3>
+  <table>
+    <tr><td class="t">1</td><td>Zaparkujte na <b>P3 u dolní stanice</b> lanovky Medvědín.</td></tr>
+    <tr><td class="t">2</td><td>Lanovkou nahoru na <b>Medvědín</b> (1 235 m). U lanovky si vezměte <b>mapu s tužkou a úkoly</b>.</td></tr>
+    <tr><td class="t">3</td><td>Pěšky z kopce zpět do údolí: <b>8,6 km a 7 zastavení s dřevěnými medvědy</b>. Nahoře je hřiště.</td></tr>
+  </table>
+  <ul>
+    <li><span class="warn">Neověřeno:</span> cenu lanovky a barvu značení stezky jsem na webu nenašel. Trasu do mapy nekreslím, řiďte se mapou od lanovky.</li>
+    <li>Infocentrum Špindlerův Mlýn: <a href="tel:+420499467101">499 467 101</a>.</li>
+  </ul>
+  <div class="btns"><a class="btn" href="https://mapy.com/fnc/v1/route?mapset=outdoor&start=15.7086503,50.6357924&end=15.60703,50.73371&routeType=car_fast" target="_blank" rel="noopener">▶ Navigace autem</a></div>
+  <div class="foot">mestospindleruvmlyn.cz, krkonose.eu, skiareal.cz, ověřeno 29. 10. 2026.</div>
+  <button class="donebtn" type="button" data-id="v7" data-nm="Medvědí stopař">✓ Splněno – získat odznak</button>
+</div>
+</details>
 </section>
 
-<div class="info"><span class="h">🧭 Navigace</span>Stáhni si aplikaci <b>Mapy.com</b> a v ní offline mapu Krkonoš. Zelená tlačítka otevřou pěší trasu, modrá navigaci autem. V lese sleduj modrou tečku, značky jsou kontrola.</div>
+<section class="panel" id="ii" hidden>
+<p class="intro">Jídlo, obchody, pomoc a tipy do deště. Otevírací doby jsou z webu (hlavně firmy.cz), mimo sezónu se mění. Čísla se dají vytočit klepnutím.</p>
+
+<details class="card" style="--c:#b42318" open>
+<summary><span class="pic" aria-hidden="true">🆘</span><div class="kick">Pomoc</div><div class="ttl">Nouzová čísla</div><div class="chips"><span class="chip">112</span><span class="chip">155</span><span class="chip">Horská služba 1210</span></div></summary>
+<div class="body">
+  <table>
+    <tr><td><b>Tísňová linka</b></td><td class="r"><a href="tel:112">112</a></td></tr>
+    <tr><td><b>Záchranka</b></td><td class="r"><a href="tel:155">155</a></td></tr>
+    <tr><td><b>Horská služba</b> (nonstop)</td><td class="r"><a href="tel:1210">1210</a></td></tr>
+    <tr><td>Horská služba – dispečink</td><td class="r"><a href="tel:+420602448338">602 448 338</a></td></tr>
+    <tr><td>Horská služba – stanice Černý Důl</td><td class="r"><a href="tel:+420721488470">721 488 470</a></td></tr>
+  </table>
+  <h3>Lékař</h3>
+  <ul>
+    <li><b>Dětská pohotovost Trutnov</b> (Oblastní nemocnice, M. Gorkého 77), tel. <a href="tel:+420499866288">499 866 288</a>. Zdroje se liší: po–pá 16–19, so–ne 10–18, nebo jen víkend a svátky 8–18. Raději zavolat.</li>
+    <li><b>Pohotovost pro dospělé Trutnov</b>: so, ne a svátky 8–18, tel. <a href="tel:+420499866222">499 866 222</a>.</li>
+    <li><b>Nemocnice Vrchlabí</b> (Fügnerova 50), tel. <a href="tel:+420499502111">499 502 111</a>. Nemá dětské lékaře, děti posílá do Jilemnice.</li>
+  </ul>
+  <h3>Lékárna</h3>
+  <ul>
+    <li>V Černém Dole není. <b>Janské Lázně</b> (Černohorská 85): po a pá 8–15, út a čt 8:30–15:30, st a víkend zavřeno. Tel. <a href="tel:+420493034401">493 034 401</a>.</li>
+    <li><b>Dr.Max Vrchlabí</b> v Kauflandu (Lánovská 1656): nejdelší otevírací doba v okolí.</li>
+  </ul>
+</div>
+</details>
+
+<details class="card" style="--c:#9a3412">
+<summary><span class="pic" aria-hidden="true">🍽</span><div class="kick">Jídlo</div><div class="ttl">Restaurace a boudy</div><div class="chips"><span class="chip">v obci</span><span class="chip">na trasách</span></div><div class="more">Zobrazit ›</div></summary>
+<div class="body">
+  <h3>V Černém Dole</h3>
+  <ul>
+    <li><b>Restaurace Pošta</b> na náměstí (denně 8–10 a 11–22, tel. <a href="tel:+420730590830">730 590 830</a>). Česká a krkonošská kuchyně.</li>
+    <li><b>Resort Aurum, restaurace V Dole</b> (čp. 83): dětské herny, tel. <a href="tel:+420778487837">778 487 837</a>. 30. 10.–1. 11. halloweenský víkend.</li>
+    <li><b>Restaurace Cihlářka</b> (čp. 200): obědy 12–15, večeře 18–21.</li>
+    <li><b>Pizza U Horský</b> u lanovek (čp. 280): stánek, provoz podle areálu, tel. <a href="tel:+420603864445">603 864 445</a>.</li>
+  </ul>
+  <h3>Boudy na trasách</h3>
+  <ul>
+    <li><b>Pražská bouda</b> (Hrnčířské boudy, okruh přes Tetřeví boudy): denně 11–22, velký dětský koutek, tel. <a href="tel:+420733695389">733 695 389</a>.</li>
+    <li><b>Kolínská bouda</b> (Hrnčířské boudy): denně 10:30–22, dětský koutek a zvířátka, tel. <a href="tel:+420499736201">499 736 201</a>.</li>
+    <li><b>Bouda Krakonoš</b> a <b>Bouda Helena</b> (Hrnčířské boudy): otevírací doba se mění, ověř na místě.</li>
+    <li><b>Tetřeví Boudy</b>: hotelová restaurace, časy nezveřejněné, tel. <a href="tel:+420602322399">602 322 399</a>.</li>
+    <li><b>Hoffmannova bouda</b> (Janské Lázně): dětský koutek, tel. <a href="tel:+420777946434">777 946 434</a>.</li>
+    <li><b>Černá bouda</b> (Černá hora): do 8. 11. denně 10–16:30, tel. <a href="tel:+420731855855">731 855 855</a>.</li>
+  </ul>
+</div>
+</details>
+
+<details class="card" style="--c:#1a7f37">
+<summary><span class="pic" aria-hidden="true">🛒</span><div class="kick">Nákupy a služby</div><div class="ttl">Obchody, bankomat, benzín</div><div class="chips"><span class="chip">potraviny v obci</span><span class="chip">supermarkety Vrchlabí</span></div><div class="more">Zobrazit ›</div></summary>
+<div class="body">
+  <ul>
+    <li><b>Potraviny Černý Důl</b> (čp. 102): 30. 10.–11. 11. denně 8–19.</li>
+    <li><b>Bankomaty</b> v Černém Dole (oba nonstop): ČSOB u úřadu (čp. 48) a Euronet u Hotelu Pošta (čp. 77).</li>
+    <li><b>Pošta</b> (čp. 80, i Balíkovna): po a st 14–18, út, čt, pá 8–12.</li>
+    <li><b>Benzín</b>: v obci není. Nejblíž <b>MOL Prostřední Lánov</b> cestou do Vrchlabí, denně 6–21.</li>
+  </ul>
+  <h3>Supermarkety ve Vrchlabí (asi 15 min autem)</h3>
+  <ul>
+    <li><b>Kaufland</b>, Lánovská 1656: denně 7–22.</li>
+    <li><b>Lidl</b>, Lánovská 1545: po–so 7–21, ne 8–21.</li>
+    <li><b>Penny</b>, Nádražní 1513: denně 7–20.</li>
+    <li><b>Billa</b>, Krkonošská 16: po–so 7–20, ne 8–20.</li>
+  </ul>
+</div>
+</details>
+
+<details class="card" style="--c:#0969da">
+<summary><span class="pic" aria-hidden="true">🌧</span><div class="kick">Když prší</div><div class="ttl">Tipy pod střechu</div><div class="chips"><span class="chip">muzea</span><span class="chip">podzemí</span><span class="chip">zvířata</span></div><div class="more">Zobrazit ›</div></summary>
+<div class="body">
+  <ul>
+    <li><b>Safari Park Dvůr Králové</b>: pavilony a Safaribus (výlet 5).</li>
+    <li><b>Muzeum Krkonoš ve Vrchlabí</b>: út–ne 9–17 (výlet 3).</li>
+    <li><b>Podzemí pevnosti Josefov</b> a <b>hospital Kuks</b> (výlet 1).</li>
+    <li><b>Tvrz Stachelberg</b>: podzemí tvrze (výlet 2).</li>
+    <li><b>Muzeum Podzemí Krkonoš</b> přímo v Černém Dole: út 10–12, čt 12–14, jen po rezervaci <a href="tel:+420734403332">734 403 332</a>.</li>
+    <li><b>Resort Aurum</b>: dětské herny u restaurace.</li>
+  </ul>
+</div>
+</details>
+
+<div class="info"><span class="h">🧭 Navigace</span>Stáhni si aplikaci <b>Mapy.com</b> a v ní offline mapu Krkonoš. Zelená tlačítka otevřou pěší trasu, modrá navigaci autem. Na mapách v appce ukáže tlačítko <b>📍 Kde jsem</b> vaši polohu i bez signálu.</div>
+<div class="info" hidden><span class="h">📱 Appka na ploše</span>Android: v Chromu menu ⋮ → Přidat na plochu / Instalovat. iPhone: v Safari tlačítko Sdílet → Přidat na plochu. Po prvním otevření jede i bez signálu.</div>
+</section>
+<!--x--><div class="info" hidden><span class="h">🧭 Navigace</span>Stáhni si aplikaci <b>Mapy.com</b> a v ní offline mapu Krkonoš. Zelená tlačítka otevřou pěší trasu, modrá navigaci autem. V lese sleduj modrou tečku, značky jsou kontrola.</div>
 <div class="info"><span class="h">📱 Appka na ploše</span>Android: v Chromu menu ⋮ → Přidat na plochu / Instalovat. iPhone: v Safari tlačítko Sdílet → Přidat na plochu. Po prvním otevření jede i bez signálu.</div>
 
 <button class="updbtn" type="button" id="upd">🔄 Aktualizovat appku</button>
 <div class="cap" id="updmsg" style="text-align:center">Stáhne nejnovější verzi. Potřebuje internet, odznaky zůstanou.</div>
 <div class="share"><img src="img/qr.png" alt="QR kód s odkazem na appku" width="120" height="120"><div><b>📲 Pošli appku dál</b><span>Ať si druhý naskenuje QR kód fotoaparátem v mobilu, otevře se mu appka. Pak stačí Přidat na plochu.</span></div></div>
-<footer>Mapy © přispěvatelé OpenStreetMap · verze 5 · 29. 10. 2026</footer>
+<footer>Mapy © přispěvatelé OpenStreetMap · verze 6 · 29. 10. 2026</footer>
 </div>
 
 <script>
@@ -386,8 +671,8 @@ function render(){
   document.querySelectorAll('.donebtn').forEach(function(b){
     b.textContent=done[b.dataset.id]?'🏅 Odznak získán: '+b.dataset.nm+' (klepni pro zrušení)':'✓ Splněno – získat odznak '+b.dataset.nm;
   });
-  document.getElementById('bcount').textContent=n+' / 6';
-  document.getElementById('champ').classList.toggle('on',n===6);
+  document.getElementById('bcount').textContent=n+' / 13';
+  document.getElementById('champ').classList.toggle('on',n===13);
 }
 document.querySelectorAll('.donebtn').forEach(function(b){
   b.addEventListener('click',function(){
@@ -405,6 +690,35 @@ document.getElementById('upd').addEventListener('click',function(){
   if('serviceWorker' in navigator){jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){return Promise.all(rs.map(function(r){return r.unregister();}));}));}
   if(window.caches){jobs.push(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k);}));}));}
   Promise.all(jobs).catch(function(){}).then(function(){location.replace('./index.html?v='+Date.now());});
+});
+
+var GEO={"p1": {"z": 15, "xc": 17813.2795392, "yc": 11022.479458360252, "w": 1000, "h": 600}, "p2": {"z": 15, "xc": 17814.954953386667, "yc": 11022.813114896642, "w": 1000, "h": 600}, "p3": {"z": 14, "xc": 8906.762308266667, "yc": 5510.009645170482, "w": 1000, "h": 820}, "p4": {"z": 15, "xc": 17817.75146097778, "yc": 11019.49748645852, "w": 1000, "h": 760}, "p5": {"z": 14, "xc": 8907.991479182223, "yc": 5510.993059362265, "w": 1000, "h": 640}, "p6": {"z": 14, "xc": 8906.970840177779, "yc": 5510.392150000569, "w": 1000, "h": 760}, "v1-pesky": {"z": 14, "xc": 8914.286441813332, "yc": 5528.258448278907, "w": 1000, "h": 560}, "v2-pesky": {"z": 15, "xc": 17832.221336462222, "yc": 11023.626402222872, "w": 1000, "h": 640}};
+var watchId=null;
+function place(lat,lon){
+  document.querySelectorAll('.mapwrap.on').forEach(function(w){
+    var g=GEO[w.dataset.geo]; if(!g) return;
+    var n=Math.pow(2,g.z);
+    var tx=(lon+180)/360*n;
+    var ty=(1-Math.log(Math.tan(lat*Math.PI/180)+1/Math.cos(lat*Math.PI/180))/Math.PI)/2*n;
+    var px=(tx-g.xc)*256+g.w/2, py=(ty-g.yc)*256+g.h/2;
+    var msg=w.nextElementSibling.nextElementSibling;
+    var me=w.querySelector('.me');
+    if(px<0||py<0||px>g.w||py>g.h){me.style.display='none';msg.textContent='Jste mimo tuhle mapu.';return;}
+    me.style.display='block';me.style.left=(px/g.w*100)+'%';me.style.top=(py/g.h*100)+'%';
+    msg.textContent='Modrá tečka = vy. Poloha se průběžně aktualizuje.';
+  });
+}
+document.querySelectorAll('.gpsbtn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var w=b.previousElementSibling, msg=b.nextElementSibling;
+    if(!navigator.geolocation){msg.textContent='Telefon nepodporuje polohu.';return;}
+    w.classList.add('on'); msg.textContent='Hledám polohu… (povol přístup k poloze)';
+    if(watchId===null){
+      watchId=navigator.geolocation.watchPosition(function(p){place(p.coords.latitude,p.coords.longitude);},
+        function(e){document.querySelectorAll('.mapwrap.on').forEach(function(x){x.nextElementSibling.nextElementSibling.textContent='Polohu se nepodařilo zjistit. Zapni GPS a povol polohu pro appku.';});},
+        {enableHighAccuracy:true,maximumAge:10000,timeout:30000});
+    }
+  });
 });
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js');});}
 </script>
