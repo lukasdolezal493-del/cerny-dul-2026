@@ -1,4 +1,4 @@
-const C="cerny-dul-2026-v3";
+const C="cerny-dul-2026-v4";
 const A=["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png",
 "./img/p1.jpg","./img/p2.jpg","./img/p3.jpg","./img/v1-auto.jpg","./img/v1-pesky.jpg","./img/v2-auto.jpg","./img/v2-pesky.jpg","./img/v3-auto.jpg"];
 // cache:"reload" = stáhnout ze sítě, ne ze staré paměti prohlížeče
