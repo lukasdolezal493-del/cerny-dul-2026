@@ -77,7 +77,7 @@ details.card.done>summary .pic::after{content:"✓";position:absolute;right:-4px
 .badges .bh b{font-size:16px}
 .badges .bh span{font-size:13.5px;color:var(--soft);font-weight:650}
 .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.badge{text-align:center;font-size:11.5px;line-height:1.25;color:var(--soft);padding:8px 2px 6px;border-radius:12px;background:#f4f1ea}
+.badge{cursor:pointer;text-align:center;font-size:11.5px;line-height:1.25;color:var(--soft);padding:8px 2px 6px;border-radius:12px;background:#f4f1ea}
 .badge .e{display:block;font-size:30px;filter:grayscale(1);opacity:.35;margin-bottom:3px;transition:all .3s}
 .badge.on{background:#fff4cf;color:var(--ink);font-weight:700;box-shadow:inset 0 0 0 2px #e3b505}
 .badge.on .e{filter:none;opacity:1;transform:scale(1.08)}
@@ -173,6 +173,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
   <div class="small" style="margin-top:6px">Podle údajů ověřených 29. 10. 2026. Klepnutím otevřeš výlet. Příští rok je potřeba časy znovu ověřit.</div></div>
 <div class="badges" id="badges">
   <div class="bh"><b>🏅 Odznaky výpravy</b><span id="bcount">0 / 13</span></div>
+  <div class="small" style="margin:-4px 0 8px">Klepni na odznak a appka tě přenese k výletu, kde ho získáš.</div>
   <div class="bgrid">
     <div class="badge" data-b="p1"><span class="e">🪨</span>Strážce lomu</div>
     <div class="badge" data-b="p2"><span class="e">⛏️</span>Mladý horník</div>
@@ -710,7 +711,7 @@ nav.bnav button[aria-selected="true"]::after{content:"";display:block;width:26px
 <button class="updbtn" type="button" id="upd">🔄 Aktualizovat appku</button>
 <div class="cap" id="updmsg" style="text-align:center">Stáhne nejnovější verzi. Potřebuje internet, odznaky zůstanou.</div>
 <div class="share"><img src="img/qr.png" alt="QR kód s odkazem na appku" width="120" height="120"><div><b>📲 Pošli appku dál</b><span>Ať si druhý naskenuje QR kód fotoaparátem v mobilu, otevře se mu appka. Pak stačí Přidat na plochu.</span></div></div>
-<footer>Mapy © přispěvatelé OpenStreetMap · verze 7 · 29. 10. 2026</footer>
+<footer>Mapy © přispěvatelé OpenStreetMap · verze 8 · 29. 10. 2026</footer>
 </div>
 
 <nav class="bnav" role="tablist"><div class="in">
@@ -803,6 +804,7 @@ function openCard(id){
   showPanel(c.closest('.panel').id); c.open=true; setTimeout(function(){c.scrollIntoView({behavior:'smooth',block:'start'});},60);
 }
 /* filtry */
+document.querySelectorAll('.badge[data-b]').forEach(function(b){b.addEventListener('click',function(){openCard(b.dataset.b);});});
 document.querySelectorAll('.filters[data-for]').forEach(function(f){
   f.querySelectorAll('button').forEach(function(b){
     b.addEventListener('click',function(){
