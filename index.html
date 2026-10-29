@@ -85,6 +85,7 @@ details.card.done>summary .pic::after{content:"✓";position:absolute;right:-4px
 .champ.on{display:block}
 .donebtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;margin:14px 0 2px;border-radius:12px;border:2px dashed var(--g);background:#f0f8f2;color:var(--g);font-size:16px;font-weight:750;cursor:pointer;padding:6px 10px}
 details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
+.updbtn{display:block;width:100%;min-height:50px;margin:18px 0 4px;border-radius:12px;border:2px solid var(--forest);background:var(--paper);color:var(--forest);font-size:16px;font-weight:750;cursor:pointer}
 </style>
 </head>
 <body>
@@ -355,7 +356,9 @@ details.card.done .donebtn{border-style:solid;background:var(--g);color:#fff}
 <div class="info"><span class="h">🧭 Navigace</span>Stáhni si aplikaci <b>Mapy.com</b> a v ní offline mapu Krkonoš. Zelená tlačítka otevřou pěší trasu, modrá navigaci autem. V lese sleduj modrou tečku, značky jsou kontrola.</div>
 <div class="info"><span class="h">📱 Appka na ploše</span>Android: v Chromu menu ⋮ → Přidat na plochu / Instalovat. iPhone: v Safari tlačítko Sdílet → Přidat na plochu. Po prvním otevření jede i bez signálu.</div>
 
-<footer>Mapy © přispěvatelé OpenStreetMap · připraveno 29. 10. 2026</footer>
+<button class="updbtn" type="button" id="upd">🔄 Aktualizovat appku</button>
+<div class="cap" id="updmsg" style="text-align:center">Stáhne nejnovější verzi. Potřebuje internet, odznaky zůstanou.</div>
+<footer>Mapy © přispěvatelé OpenStreetMap · verze 4 · 29. 10. 2026</footer>
 </div>
 
 <script>
@@ -389,6 +392,15 @@ document.querySelectorAll('.donebtn').forEach(function(b){
   });
 });
 render();
+document.getElementById('upd').addEventListener('click',function(){
+  var m=document.getElementById('updmsg');
+  if(!navigator.onLine){m.textContent='Nejsi připojený k internetu, zkus to na wifi.';return;}
+  m.textContent='Stahuju nejnovější verzi…';
+  var jobs=[];
+  if('serviceWorker' in navigator){jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){return Promise.all(rs.map(function(r){return r.unregister();}));}));}
+  if(window.caches){jobs.push(caches.keys().then(function(ks){return Promise.all(ks.map(function(k){return caches.delete(k);}));}));}
+  Promise.all(jobs).catch(function(){}).then(function(){location.replace('./index.html?v='+Date.now());});
+});
 if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js');});}
 </script>
 </body>
